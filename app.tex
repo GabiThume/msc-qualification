@@ -284,32 +284,6 @@ Universidade de São Paulo \\ }
   \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
-\begin{frame}{Contextualização - Redes Neurais}
-\justifying
-  \begin{itemize}
-    \item Redes neurais de convolução (CNN)
-    \begin{itemize}
-        \item Camadas de neurônios para aprender as melhores características que diferenciam as classes;
-        \item Aprendizado: ajuste dos parâmetros entre a saída esperada e a produzida.
-    \end{itemize}
-    \item Máquinas de Boltzmann restritas (RBM)
-    \begin{itemize}
-        \item Aprende a representação das imagens de entrada;
-        \item Definir quais imagens são relevantes para o aprendizado.
-    \end{itemize}
-  \end{itemize}
- \textbf{Aprendem versões processadas das imagens de entrada, indicando que os filtros aprendidos são os que melhor diferenciam as classes.}
-\end{frame}
-%-----------------------------------------------------------------------------
-\begin{frame}{Contextualização - SMOTE}
-\justifying
-    \begin{itemize}
-        \item Rebalancear classes ao gerar artificialmente novos elementos, ao invés de apenas replicá-los;
-        \item Sobre os vetores de características previamente extraídos;
-        \item (Chawla et al., 2002) \textbf{Diferentes estratégias para criar exemplos sintéticos podem melhorar a performance da classificação.}
-    \end{itemize}
-\end{frame}
-%-----------------------------------------------------------------------------
 \subsection{Hipóteses e objetivos}
 \begin{frame}{Hipóteses}
   \begin{block}{Geração de imagens artificiais}
@@ -366,8 +340,7 @@ Universidade de São Paulo \\ }
   \end{block}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Fundamentos}
-\begin{frame}{Fundamentos}
+\begin{frame}{Contextualização}
 \setstretch{1.2}
 \begin{itemize}
     \item Métodos canônicos de pré-processamento
@@ -485,6 +458,23 @@ Universidade de São Paulo \\ }
 \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
+\begin{frame}{Contextualização - Redes Neurais}
+\justifying
+  \begin{itemize}
+    \item Redes neurais de convolução (CNN)
+    \begin{itemize}
+        \item Camadas de neurônios para aprender as melhores características que diferenciam as classes;
+        \item Aprendizado: ajuste dos parâmetros entre a saída esperada e a produzida.
+    \end{itemize}
+    \item Máquinas de Boltzmann restritas (RBM)
+    \begin{itemize}
+        \item Aprende a representação das imagens de entrada;
+        \item Definir quais imagens são relevantes para o aprendizado.
+    \end{itemize}
+  \end{itemize}
+ \textbf{Aprendem versões processadas das imagens de entrada, indicando que os filtros aprendidos são os que melhor diferenciam as classes.}
+\end{frame}
+%-----------------------------------------------------------------------------
 \subsection{Deep learning}
 \begin{frame}{Deep Learning}
 \begin{itemize}
@@ -496,6 +486,18 @@ Universidade de São Paulo \\ }
   \item Subdividem em problemas mais simples de serem resolvidos, podendo chegar ao nível de pixels isolados.
 \end{itemize}
 
+
+% Visualizing and Understanding Convolutional Networks
+% Understanding Deep Image Representations by Inverting Them
+
+\begin{frame}{Deep Learning}
+ \begin{figure}[hbpt]
+ \begin{center}
+   \includegraphics[width=0.8\linewidth]{\detokenize {figuras/convnet.png}}
+ \end{center}
+  \caption{}
+\end{figure}
+\end{itemize}
 
 % A simulação desse modelo inspirado biologicamente utilizada hoje é de \citet{lecun1998} e chama-se Rede Neural de Convolução (CNN ou ConvNet). Eles simplificaram tal arquitetura para utilizar um algoritmo de retropropagação para o treino. Desde então, essas redes vêm sendo utilizadas para detecção, reconhecimento, restauração, remoção de ruído e segmentação de imagens e vídeos, além de sua aplicação em áudio. Um exemplo de utilização dessa rede inspirada no modelo de LeCun foi desenvolvida pela empresa Google, com o objetivo de detectar faces e placas de carros para proteger a privacidade nas imagens de StreetView \cite{google09}. 
 
@@ -549,6 +551,8 @@ Universidade de São Paulo \\ }
     \end{block}
     \end{itemize}
 
+
+
 % Realizar uma sobreamostragem em um determinado conjunto de dados significa aumentar, utilizando alguma estratégia, o número de elementos desse conjunto. Em \citet{Chawla2002}, a simples replicação de exemplos já existentes na classe minoritária não melhorou a classificação. Isso se deve ao reconhecimento de regiões muito específicas, causando \textit{overfitting}.
 
 % O SMOTE é uma técnica para rebalancear classes ao gerar artificialmente novos elementos, ao invés de apenas replicá-los. É aplicado sobre os vetores de características previamente extraídos, com operações de perturbação dos dados de treino (como rotação, por exemplo) no espaço de características, e não no espaço dos dados. A diferença entre o vetor de características de um elemento e do seu vizinho mais próximo é multiplicada por um número aleatório entre zero e um. Esse valor é adicionado ao vetor original, criando um novo elemento. Essa abordagem provoca a geração de um elemento entre os dois vetores originais. Os exemplos sintéticos forçam uma região de decisão maior e mais geral para serem aprendidas como exemplos da classe minoritária \cite{Chawla2002}.
@@ -556,6 +560,15 @@ Universidade de São Paulo \\ }
 % Dessa forma, o SMOTE provê mais elementos para o classificador aprender, ao contrário da replicação de dados. Como trabalhos futuros, \citet{Chawla2002} apontam que diferentes estratégias para criar esses exemplos sintéticos podem melhorar a performance da classificação. Inclusive salientando exemplos que foram errôneamente classificados.
 
 % Uma variação desse algoritmo, denominada Borderline-SMOTE1 \cite{Han2005}, considera que elementos fora da linha de borda de cada classe pouco contribuem para a classificação. Por isso, propôe a geração de elementos sintéticos utilizando apenas elementos de borda. Considera que se os vizinhos mais próximos são da classe majoritária, o exemplo é ruído, e se há mais vizinhos da classe majoritária do que da minoritária, considera esse elemento como sendo de borda. Como trabalho futuro, destacam a necessidade de considerar diferentes estratégias para definir em quais elementos realizar o over-sampling.
+\end{frame}
+%-----------------------------------------------------------------------------
+\begin{frame}{Contextualização - SMOTE}
+\justifying
+    \begin{itemize}
+        \item Rebalancear classes ao gerar artificialmente novos elementos, ao invés de apenas replicá-los;
+        \item Sobre os vetores de características previamente extraídos;
+        \item (Chawla et al., 2002) \textbf{Diferentes estratégias para criar exemplos sintéticos podem melhorar a performance da classificação.}
+    \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Desbalanceamento de classes - Subamostragem}
