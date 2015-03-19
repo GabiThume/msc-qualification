@@ -349,7 +349,7 @@ Universidade de São Paulo \\ }
 \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
-\subsection{Pré-processamento de imagens}
+\subsection{Pré-processamento}
 \begin{frame}{Pré-processamento de Imagens}
 \begin{figure}[htbp]
  \begin{center}
@@ -475,7 +475,7 @@ Universidade de São Paulo \\ }
  \textbf{Aprendem versões processadas das imagens de entrada, indicando que os filtros aprendidos são os que melhor diferenciam as classes.}
 \end{frame}
 %-----------------------------------------------------------------------------
-\subsection{Deep learning}
+\subsection{Redes de Convolução}
 \begin{frame}{Deep Learning}
 \begin{itemize}
   \item Reconhecimento humano de novos padrões está relacionada com a capacidade de generalização, através de hierarquias.% \cite{thesisDeep}. 
@@ -498,6 +498,7 @@ Universidade de São Paulo \\ }
  \end{center}
   \caption{}
 \end{figure}
+\end{frame}
 
 % A simulação desse modelo inspirado biologicamente utilizada hoje é de \citet{lecun1998} e chama-se Rede Neural de Convolução (CNN ou ConvNet). Eles simplificaram tal arquitetura para utilizar um algoritmo de retropropagação para o treino. Desde então, essas redes vêm sendo utilizadas para detecção, reconhecimento, restauração, remoção de ruído e segmentação de imagens e vídeos, além de sua aplicação em áudio. Um exemplo de utilização dessa rede inspirada no modelo de LeCun foi desenvolvida pela empresa Google, com o objetivo de detectar faces e placas de carros para proteger a privacidade nas imagens de StreetView \cite{google09}. 
 
@@ -505,8 +506,16 @@ Universidade de São Paulo \\ }
 
 % Para o uso em bases desbalanceadas, as imagens utilizadas para o rebalanceamento de forma visual podem ser geradas após o estudo das características latentes, encontradas no treinamento da classe minoritária em uma CNN. Essas características também podem ser realçadas de forma a melhorar a classificação de imagens. 
 
-
+\begin{frame}{Deep Learning}
+%  \begin{figure}[hbpt]
+%  \begin{center}
+%    \includegraphics[width=0.8\linewidth]{{figuras/convnet.png}}
+%  \end{center}
+%   \caption{}
+% \end{figure}
+camadas
 \end{frame}
+
 %-----------------------------------------------------------------------------
 \subsection{Máquina de Boltzmann restrita}
 \begin{frame}{Máquina de Boltzmann restrita}
@@ -514,10 +523,17 @@ Universidade de São Paulo \\ }
   \item Rede neural estocástica que treina um modelo a partir dos vetores de entrada;
   \item Os pixels correspondem às unidades visíveis e os detectores de características às unidades ocultas;
   \item Começa em um estado aleatório e atualiza seus pesos até encontrar uma distribuição que esteja em equilíbrio;
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Máquina de Boltzmann restrita}
+\begin{itemize}
   \item Identificar se uma imagem é relevante para o aprendizado.
 \end{itemize}
 
 \end{frame}
+
 %-----------------------------------------------------------------------------
 \subsection{Desbalanceamento de classes}
 \begin{frame}{Desbalanceamento de classes}
@@ -539,14 +555,15 @@ Universidade de São Paulo \\ }
 %-----------------------------------------------------------------------------
 \begin{frame}{Desbalanceamento de classes - Sobreamostragem}
     \begin{itemize}
-        \item Aumentar, utilizando alguma estratégia, o número de elementos do conjunto;
+        \item Aumentar o número de elementos do conjunto;
         \item Replicação não reporta melhorias;
     \begin{block}{SMOTE}
     \justifying
         \begin{itemize}
-            \item A diferença entre o vetor de características de um elemento e do seu vizinho mais próximo é multiplicada por um número entre zero e um;
-            \item Valor adicionado ao vetor original, criando um novo elemento entre os dois vetores originais;
-            \item Força uma região de decisão maior e mais geral para serem aprendidas como exemplos da classe minoritária;
+            \item Multiplica a diferença entre o vetor de características de um elemento e do seu vizinho mais próximo por um número [0-1];
+            \item Adiciona ao vetor original, criando um novo elemento entre os dois vetores originais;
+            \item Aprendida como exemplo da classe minoritária;
+            \item Força uma região de decisão maior e mais geral;
         \end{itemize}
     \end{block}
     \end{itemize}
@@ -573,10 +590,10 @@ Universidade de São Paulo \\ }
 %-----------------------------------------------------------------------------
 \begin{frame}{Desbalanceamento de classes - Subamostragem}
     \begin{itemize}
-        \item Diminuir, utilizando alguma estratégia, o número de elementos do conjunto;
-        \item Eliminar elementos da classe majoritária que estão distantes da fronteira de decisão;
+        \item Diminuir o número de elementos do conjunto;
+        \item Eliminar elementos da classe majoritária distantes da fronteira de decisão;
         \item Normalmente apresentam resultados piores;
-        \item Pode remover informações essenciais dos dados originais;
+        \item Podem remover informações essenciais dos dados originais;
         \item Não há melhor para todos os cenários.
     \end{itemize}
 % Ao contrário da sobreamostragem, a subamostragem visa diminuir o número de elementos de um determinado conjunto. A ideia é eliminar elementos da classe majoritária que estão distantes da fronteira de decisão, isso porque eles são considerados menos relevantes para a aprendizagem.
@@ -793,9 +810,11 @@ Distância entre a média das classes e a variância dentro das classes. Baseia 
 \begin{frame}{Resultados Esperados}
 
 \begin{itemize}
-\item Melhorar a classificação, validando-a através do cálculo da medida-F1. 
-\item A análise das características aprendidas por uma rede neural de convolução será realizada ao executar o treinamento com bases específicas que destaquem propriedades como cor, textura e forma. 
-\item Os resultados serão obtidos a partir da escolha de quais imagens adicionam informação ao conjunto de treino. As redes RBM serão utilizadas para este fim. 
+\item \textit{Pré-processamento} de imagens que caracterizem melhor aspectos de suas classes, aumentando a variância entre as classes quando comparado com as imagens originais.
+\item \textit{Geração artificial de imagens} de classes minoritárias de forma a compensar o desbalanceamento natural das bases de dados.
+\item Melhorar a classificação, validando-a com a medida-F1. 
+\item Análise as características aprendidas com o treinamento de uma CNN com bases específicas que destaquem propriedades como cor, textura e forma. 
+\item Escolher imagens que adicionam informação ao conjunto de treino (RBM).
 \item Bases naturalmente não balanceadas serão testadas e seus resultados avaliados.
 \end{itemize}
 
@@ -902,35 +921,35 @@ Classes com maior dificultade de diferenciação, havendo alta taxa de sobreposi
 \begin{frame}{Resultados Preliminares - Melhor}
 \begin{itemize}
 \item Ganho estatístico da medida-F, quando comparado à geração de exemplos artificiais no espaço de atributos; % (ou seja, depois que as características já foram extraídas das imagens)
-\item Descritor ACC, conversão MSB e operação de pré-processamento combinação. 
+% \item Descritor ACC, conversão MSB e operação de pré-processamento combinação. 
 \end{itemize}
 \vspace{-0.2cm}
 \begin{figure}[htb]
  \begin{center}
-   \includegraphics[width=0.6\linewidth]{\detokenize {figuras/resultado-melhor4.png}}
+   \includegraphics[width=0.7\linewidth]{\detokenize {figuras/resultado-melhor4.png}}
  \end{center}
  \caption{Resultado obtido com a operação de combinação.}
 \end{figure}
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Resultados Preliminares - Pior}
-
-\begin{itemize}
-\item Adição de ruído, extração com CCV e a quantização por MSB;
-\item Outros casos que não obtiveram o resultado esperado envolveram as operações de borramento e de \textit{unsharp masking}.
-\end{itemize}
 \begin{figure}[htb]
  \begin{center}
-   \includegraphics[width=0.6\linewidth]{\detokenize {figuras/resultado-pior1.png}}
+   \includegraphics[width=0.8\linewidth]{\detokenize {figuras/resultado-pior1.png}}
  \end{center}
  \caption{Piores resultados, obtidos com a adição de ruído.}
 \end{figure}
+% \begin{itemize}
+% % \item Adição de ruído, extração com CCV e a quantização por MSB;
+% \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Resultados Preliminares}
+\setstretch{1.2}
 \begin{itemize}
 \item Melhores operações: todas, apenas mistura e apenas composição;
 \item Piores: apenas borramento, ruído ou \textit{unsharp masking};
+\vspace{2pt}
 \item Melhor extrator: ACC;
 \item Piores: CCV e GCH;
 \end{itemize}
@@ -1009,6 +1028,19 @@ Ponti, M.; Nazaré, T; Thumé, G. Image quantization as a dimensionality reducti
 
 \end{frame}
 %-----------------------------------------------------------------------------
+\begin{frame}{Agradecimentos}
+\begin{columns}
+  \begin{column}{0.5\textwidth}
+  \centering
+    \includegraphics[width=0.6\columnwidth]{figuras/cnpqLogo.jpg}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+  \centering
+    \includegraphics[width=0.6\columnwidth]{figuras/brasao_usp_pb}
+  \end{column}
+\end{columns}
+\end{frame}
+%-----------------------------------------------------------------------------
 \begin{frame}{Próximos Passos}
 \setstretch{1.2}
   \begin{itemize}
@@ -1016,9 +1048,6 @@ Ponti, M.; Nazaré, T; Thumé, G. Image quantization as a dimensionality reducti
   \item Utilizar todas as classes com apenas 1 desbalanceada;
   \item Analisar o treinamento da CNN para as 3 bases bem discriminadas.
   \end{itemize}
-\end{frame}
-%-----------------------------------------------------------------------------
-\begin{frame}{Agradecimentos?}
 \end{frame}
 %-----------------------------------------------------------------------------
 \section{Referências}
