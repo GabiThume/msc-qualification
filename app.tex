@@ -121,6 +121,7 @@ Universidade de São Paulo \\ }
 \date{27 de março de 2015}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
+\setbeamercovered{transparent}
 \begin{frame}[plain]
   \maketitle
 \end{frame}
@@ -136,19 +137,26 @@ Universidade de São Paulo \\ }
 \begin{frame}<beamer>[noframenumbering]{Estrutura da Apresentação}
 \setstretch{1.2}
 \begin{multicols}{2}
-\tableofcontents[currentsection,currentsubsection, hideothersubsections, 
-    sectionstyle=show/shaded,
+\tableofcontents[currentsection, sectionstyle=show/shaded,
 ]
+% \tableofcontents[currentsection,currentsubsection, hideothersubsections, 
+%     sectionstyle=show/shaded,
+% ]
 \end{multicols}
 \end{frame}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introdução}
 \begin{frame}{Introdução}
+\setstretch{1.2}
+\setlength\leftmargini{0em}
+\justifying
 \begin{itemize}
 \item Classificação de imagens;
+\pause
 \item Algoritmos de aprendizado de máquina;
 \item Generalização para classificar novos exemplos;
+\pause
 \item Conjuntos de características que dificultam a diferenciação entre as classes;
 \item Encontrar as características que melhor discriminam as classes.
 \end{itemize}
@@ -163,14 +171,20 @@ Universidade de São Paulo \\ }
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Motivação}
+\setstretch{1.2}
+\setlength\leftmargini{0em}
+\justifying
 \begin{itemize}
 \item Maior esforço ao operar no espaço de características já obtidas;
-\item Transformações do espaço ou sistemas de classificação complexos para lidar com as deficiências das características extraídas;
+\item Transformações do espaço ou sistemas complexos de classificação para lidar com as deficiências das características extraídas;
 \item Características que podem ser exploradas além dos métodos clássicos;
 \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Motivação - Características Latentes}
+\setlength\leftmargini{0em}
+\justifying
+\setstretch{1.2}
 \begin{itemize}
 \item Métodos de processamento e preparação de imagens antes da extração dessas características;
 \item Podem revelar características latentes, não visíveis nas imagens originais;
@@ -252,7 +266,10 @@ Universidade de São Paulo \\ }
 \renewcommand{\tabcolsep}{0.25cm}
 \end{frame}
 %-----------------------------------------------------------------------------
-\begin{frame}{Desbalanceamento de classes}
+\begin{frame}{Motivação - Desbalanceamento de classes}
+\setlength\leftmargini{0em}
+\justifying
+\setstretch{1.2}
   \begin{itemize}
     \item Diferença entre o número de exemplos disponíveis;
     \item Obstáculo;
@@ -271,21 +288,30 @@ Universidade de São Paulo \\ }
 %-----------------------------------------------------------------------------
 \subsection{Contextualização}
 \begin{frame}{Contextualização}
+\setlength\leftmargini{0em}
+\justifying
+ \setstretch{1.2}
   \begin{itemize}
+\justifying
     \item Grupo de pesquisa em Visualização, Imagens e Computação Gráfica (VICG)
-    \begin{itemize}
-        \item Visualização de informação com projeções multidimensionais e árvores;
-        \item Extração e classificação de imagens.
-    \end{itemize}
-    \item (Rocha et al., 2010) 98\% de acurácia após aquisição, pré-processamento e segmentação; % frutas
-    \item (Kanan e Cottrell, 2012) Quantização pode impactar a classificação;
-    \item (Ponti et al., 2014) Quantização permite obter vetores de caractísticas mais compactos e com maior capacidade de discriminação entre classes;
-    \item Continuidade a essa pesquisa: analisar deep learning (aprendem quais operações geram as caracteristicas).
+    \only<1>{
+      \begin{itemize}
+          \item Visualização de informação com projeções multidimensionais e árvores;
+          \item Extração e classificação de imagens.
+      \end{itemize}
+    }
+    \item <2-3> (Rocha et al., 2010) 98\% de acurácia após aquisição, pré-processamento e segmentação; % frutas
+    \item <2-3> (Kanan e Cottrell, 2012) Quantização pode impactar a classificação;
+    \item <2-3> (Ponti et al., 2014) Quantização permite obter vetores de caractísticas mais compactos e com maior capacidade de discriminação entre classes;
+    \item[] \only<3> {Continuidade: analisar redes que aprendem quais operações geram as características.}
   \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
 \subsection{Hipóteses e objetivos}
-\begin{frame}{Hipóteses}
+\setstretch{1.2}
+\setlength\leftmargini{1em}
+\justifying
+ \begin{frame}{Hipóteses}
   \begin{block}{Geração de imagens artificiais}
     \justifying
     \begin{itemize}
@@ -312,6 +338,9 @@ Universidade de São Paulo \\ }
 % \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Objetivos}
+\setstretch{1.2}
+\setlength\leftmargini{1em}
+\justifying
   \begin{block}{Geral}
   \justifying
   Investigar os métodos de pré-processamento para preparar uma coleção de imagens para a extração de características.
@@ -322,6 +351,9 @@ Universidade de São Paulo \\ }
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Objetivos}
+\setstretch{1.2}
+\setlength\leftmargini{1em}
+\justifying
   \begin{block}{Específicos}
     \justifying
     \begin{itemize}
@@ -332,15 +364,19 @@ Universidade de São Paulo \\ }
         \end{itemize}
       \item Tornar as características latentes visíveis. Aumentar a variância entre as classes;% com o auxílio dos métodos canônicos e CNN;
       \item Gerar imagens artificiais a partir das imagens pertencentes às classes minoritárias, compensando o desbalanceamento. 
+      \only<2>{
         \begin{itemize}
           \item Resultados preliminares 
-          \item Matriz de características aprendida por RBM para verificar se as imagens geradas são relevantes para o aprendizado e escolher as imagens originais.
+          \item Matriz de características aprendida por RBM para verificar a relevância das imagens geradas e as imagens originais.
         \end{itemize}
+        }
     \end{itemize}
   \end{block}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Contextualização}
+\setlength\leftmargini{0em}
+\justifying
 \setstretch{1.2}
 \begin{itemize}
     \item Métodos canônicos de pré-processamento
@@ -360,14 +396,19 @@ Universidade de São Paulo \\ }
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Pré-processamento de Imagens - Convolução}
-\setstretch{1.5}
+\setlength\leftmargini{0em}
+\justifying
+\setstretch{1.2}
 \begin{itemize}
     \item Percorre a imagem com um filtro espacial rotacionado em $180\degree$; \\
     \item Cria cada novo pixel com as mesmas coordenadas do centro da vizinhança contendo o valor resultante da filtragem.
 \end{itemize}
-\begin{equation}
-\text{Mapa de características} = imagem de entrada * filtro
-\end{equation}
+\begin{figure}[htbp]
+ \begin{center}
+   \includegraphics[width=.5\linewidth]{figuras/convolucao.jpg}
+ \caption{Convolução com kernel já rotacionado}
+ \end{center}
+\end{figure}
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Pré-processamento de Imagens - Convolução}
@@ -430,6 +471,8 @@ Universidade de São Paulo \\ }
 %-----------------------------------------------------------------------------
 \subsection{Extração de características}
 \begin{frame}{Extração de Características}
+\setlength\leftmargini{0em}
+\justifying
 \begin{itemize}
 \item Descrever as informações visuais relevantes em um vetor de características;
 \item Entrada para o classificador de padrões;
@@ -444,59 +487,65 @@ Universidade de São Paulo \\ }
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Extração de Características}
+\setlength\leftmargini{1.5em}
 \begin{itemize}
-\item[GCH] Histograma global de cor. $N$ dimensões, sendo $N$ o número de intensidades. % Mais simples representação. 
+\item[GCH]<1> {Histograma global de cor - $N$D (intensidades).} % Mais simples representação. }
 
-\item[CCV] Vetor de coerência de cor. Classifica os pixels da imagem em coerentes e incoerentes, computa os respectivos histogramas de acordo com um \textit{threshold} e os concatena. $2N$D. % informações sobre como as cores são organizadas em 
-% , uma dimensão para o número de pixeis coerentes e outra para incoerentes, que são determinados de acordo com um determinado threshold.
+\item[CCV]<2> {Vetor de coerência de cor. Classifica os pixels da imagem em coerentes e incoerentes, computa os respectivos histogramas de acordo com um \textit{threshold} e os concatena - $2N$D.} % informações sobre como as cores são organizadas em 
+% , uma dimensão para o número de pixeis coerentes e outra para incoerentes, que são determinados de acordo com um determinado threshold.}
 
-\item[BIC] Classificação de pixels de borda e interior. Mesma cor que seus vizinhos, é pixel de interior. Computa dois histogramas $2N$D.
+\item[BIC]<3> {Classificação de pixels de borda e interior. Mesma cor que seus vizinhos, é pixel de interior. Computa dois histogramas - $2N$D.}
 
-\item[ACC] Auto-correlograma de cor: captura a correlação espacial entre cores idênticas. Probabilidade de encontrar dois pixels com a mesma cor, a uma distância $d$ um do outro. Para 1, 3, 5 e 7; $4N$ características.
+\item[ACC]<4> {Auto-correlograma de cor: captura a correlação espacial entre cores idênticas. Probabilidade de encontrar dois pixels com a mesma cor, a uma distância $d$ um do outro. Para 1, 3, 5 e 7 - $4N$ características.}
 
-\item[Haralick] entropia, homogeneidade, contraste, correlação, probabilidade máxima e uniformidade. 6D.
+\item[Haralick]<5> {Entropia, homogeneidade, contraste, correlação, probabilidade máxima e uniformidade - 6D.}
 \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Contextualização - Redes Neurais}
+\setlength\leftmargini{0em}
 \justifying
   \begin{itemize}
     \item Redes neurais de convolução (CNN)
     \begin{itemize}
-        \item Camadas de neurônios para aprender as melhores características que diferenciam as classes;
-        \item Aprendizado: ajuste dos parâmetros entre a saída esperada e a produzida.
+        \item<2> Camadas de neurônios para aprender as melhores características que diferenciam as classes;
+        \item<2> Aprendizado: ajuste dos parâmetros entre a saída esperada e a produzida.
     \end{itemize}
-    \item Máquinas de Boltzmann restritas (RBM)
+    \item <1,3> Máquinas de Boltzmann restritas (RBM)
     \begin{itemize}
-        \item Aprende a representação das imagens de entrada;
-        \item Definir quais imagens são relevantes para o aprendizado.
+        \item<3> Aprende a representação das imagens de entrada;
+        \item<3> Definir quais imagens são relevantes para o aprendizado.
     \end{itemize}
   \end{itemize}
- \textbf{Aprendem versões processadas das imagens de entrada, indicando que os filtros aprendidos são os que melhor diferenciam as classes.}
+\textbf{Aprendem versões processadas das imagens de entrada, indicando que os filtros aprendidos são os que melhor diferenciam as classes.}
 \end{frame}
 %-----------------------------------------------------------------------------
 \subsection{Redes de Convolução}
 \begin{frame}{Deep Learning}
+\setlength\leftmargini{0em}
+\justifying
 \begin{itemize}
-  \item Reconhecimento humano de novos padrões está relacionada com a capacidade de generalização, através de hierarquias.% \cite{thesisDeep}. 
-  \item Simular o funcionamento do cérebro humano por meio de múltiplas camadas.
-  \item Imagens como treinamento para automaticamente inferir quais são as regras para o reconhecimento;
-  \item Conhecimento através da experiência: ao tentar uma solução e errar, aprendem e podem tentar novamente. Neurônios de entrada, ocultos e de saída. Aprender = encontrar os pesos para exibir o comportamento esperado%. \cite{Schmidhuber2014}.
+  \item Reconhecimento humano de novos padrões - capacidade de generalização (hierarquias).% \cite{thesisDeep}. 
+  \item Simular o funcionamento do cérebro humano por meio de camadas.
   \item Redes neurais profundas possuem uma estrutura de muitas camadas -- duas ou mais ocultas %\cite{neuralNielsen}. 
-  \item Subdividem em problemas mais simples de serem resolvidos, podendo chegar ao nível de pixels isolados.
+  \item Subdividem em problemas mais simples de serem resolvidos.
+  \item Imagens como treinamento para inferir as regras para o reconhecimento;
+  \item Conhecimento através da experiência: ao tentar uma solução e errar, aprendem e podem tentar novamente. 
+  \item Aprender é encontrar os pesos para exibir o comportamento esperado%. \cite{Schmidhuber2014}.
 \end{itemize}
+% \setlength\leftmargini{10em}
 
 
 % Visualizing and Understanding Convolutional Networks
 % Understanding Deep Image Representations by Inverting Them
 \end{frame}
 
-\begin{frame}{Deep Learning}
+\begin{frame}{Redes de Convolução}
  \begin{figure}[hbpt]
  \begin{center}
-   \includegraphics[width=0.8\linewidth]{{figuras/convnet.png}}
+   \includegraphics[width=1\linewidth]{{figuras/CNNArchitecture.jpg}}
+  \caption{Arquitetura de uma CNN. \\ Fonte: http://parse.ele.tue.nl/education/cluster2}
  \end{center}
-  \caption{}
 \end{figure}
 \end{frame}
 
@@ -506,19 +555,42 @@ Universidade de São Paulo \\ }
 
 % Para o uso em bases desbalanceadas, as imagens utilizadas para o rebalanceamento de forma visual podem ser geradas após o estudo das características latentes, encontradas no treinamento da classe minoritária em uma CNN. Essas características também podem ser realçadas de forma a melhorar a classificação de imagens. 
 
-\begin{frame}{Deep Learning}
-%  \begin{figure}[hbpt]
-%  \begin{center}
-%    \includegraphics[width=0.8\linewidth]{{figuras/convnet.png}}
-%  \end{center}
-%   \caption{}
-% \end{figure}
-camadas
+\begin{frame}{Redes de Convolução}
+ \begin{figure}[hbpt]
+ \begin{center}
+   \includegraphics[width=1\linewidth]{{figuras/feature-1-2.png}}
+  \caption{Primeira e segunda camada. \\ Fonte: \cite{Zeiler2013}}
+ \end{center}
+\end{figure}
+\end{frame}
+\begin{frame}{Redes de Convolução}
+ \begin{figure}[hbpt]
+ \begin{center}
+   \includegraphics[width=1\linewidth]{{figuras/feature-3.png}}
+  \caption{Terceira camada. \\ Fonte: \cite{Zeiler2013}}
+ \end{center}
+\end{figure}
+\end{frame}
+\begin{frame}{Redes de Convolução}
+ \begin{figure}[hbpt]
+ \begin{center}
+   \includegraphics[width=0.95\linewidth]{{figuras/feature-4-5.png}}
+  \caption{Quarta e quinta camada. \\ Fonte: \cite{Zeiler2013}}
+ \end{center}
+\end{figure}
 \end{frame}
 
 %-----------------------------------------------------------------------------
 \subsection{Máquina de Boltzmann restrita}
 \begin{frame}{Máquina de Boltzmann restrita}
+\setlength\leftmargini{0em}
+\justifying
+ \begin{figure}[hbpt]
+ \begin{center}
+   \includegraphics[width=.5\linewidth]{{figuras/rbm.png}}
+ \end{center}
+  % \caption{Quarta e quinta camada. \\ Fonte: \cite{Zeiler2013}}
+\end{figure}
 \begin{itemize}
   \item Rede neural estocástica que treina um modelo a partir dos vetores de entrada;
   \item Os pixels correspondem às unidades visíveis e os detectores de características às unidades ocultas;
@@ -528,6 +600,9 @@ camadas
 \end{frame}
 
 \begin{frame}{Máquina de Boltzmann restrita}
+\setlength\leftmargini{0em}
+\justifying
+\setstretch{1.2}
 \begin{itemize}
   \item Identificar se uma imagem é relevante para o aprendizado.
 \end{itemize}
@@ -537,6 +612,8 @@ camadas
 %-----------------------------------------------------------------------------
 \subsection{Desbalanceamento de classes}
 \begin{frame}{Desbalanceamento de classes}
+\setlength\leftmargini{0em}
+\justifying
 \setstretch{1.2}
 \begin{itemize}
   \item Número desbalanceado de exemplos. Majoritárias x minoritárias.
@@ -554,11 +631,14 @@ camadas
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Desbalanceamento de classes - Sobreamostragem}
+\setlength\leftmargini{0em}
+\justifying
     \begin{itemize}
         \item Aumentar o número de elementos do conjunto;
         \item Replicação não reporta melhorias;
     \begin{block}{SMOTE}
     \justifying
+\setlength\leftmargini{1em}
         \begin{itemize}
             \item Multiplica a diferença entre o vetor de características de um elemento e do seu vizinho mais próximo por um número [0-1];
             \item Adiciona ao vetor original, criando um novo elemento entre os dois vetores originais;
@@ -580,6 +660,14 @@ camadas
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Contextualização - SMOTE}
+\setlength\leftmargini{0em}
+\justifying
+ \begin{figure}[hbpt]
+ \begin{center}
+   \includegraphics[width=.6\linewidth]{{figuras/smote.jpeg}}
+   % http://www.intechopen.com/books/advances-in-data-mining-knowledge-discovery-and-applications/selecting-representative-data-sets
+ \end{center}
+\end{figure}
 \justifying
     \begin{itemize}
         \item Rebalancear classes ao gerar artificialmente novos elementos, ao invés de apenas replicá-los;
@@ -589,6 +677,8 @@ camadas
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Desbalanceamento de classes - Subamostragem}
+\setlength\leftmargini{0em}
+\justifying
     \begin{itemize}
         \item Diminuir o número de elementos do conjunto;
         \item Eliminar elementos da classe majoritária distantes da fronteira de decisão;
@@ -602,15 +692,9 @@ camadas
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Proposta}
-% \begin{frame}{Proposta}
-% \end{frame}
-%-----------------------------------------------------------------------------
-\subsection{Metodologia}
-\begin{frame}{Metodologia}
-\end{frame}
-%-----------------------------------------------------------------------------
 \begin{frame}{Metodologia}
 \setstretch{1.2}
+\setlength\leftmargini{1em}
 \begin{block}{Características latentes}
 \justifying
 \begin{itemize}
@@ -622,6 +706,7 @@ camadas
 %-----------------------------------------------------------------------------
 \begin{frame}{Metodologia}
 \setstretch{1.2}
+\setlength\leftmargini{1em}
 \begin{block}{Redes neurais}
 \justifying
 \begin{itemize}
@@ -630,10 +715,6 @@ camadas
 \item RBM são redes neurais mais simples, convenientes para a verificação da relevância de uma imagem para o aprendizado.
 \end{itemize}
 \end{block}
-\end{frame}
-%-----------------------------------------------------------------------------
-\begin{frame}{Metodologia}
-\setstretch{1.2}
 \begin{block}{Desbalanceamento de classes}
 \justifying
 % esse problema é fundamentado em reconhecimento de padrões, e consiste em lidar com um conjunto de classes que possuem quantidades desiguais de imagens. Deve-se assim 
@@ -643,14 +724,11 @@ Pesquisar métodos que visam equilibrar o número de imagens em cada classe.
 %-----------------------------------------------------------------------------
 \begin{frame}{Metodologia}
 \setstretch{1.2}
+\setlength\leftmargini{1em}
 \begin{block}{Descritores}
 \justifying
 Investigar métodos capazes de descrever as propriedades das imagens.
 \end{block}
-\end{frame}
-%-----------------------------------------------------------------------------
-\begin{frame}{Metodologia}
-\setstretch{1.2}
 \begin{block}{Classificador de padrões}
 \justifying
 \begin{itemize}
@@ -662,18 +740,20 @@ Investigar métodos capazes de descrever as propriedades das imagens.
 %-----------------------------------------------------------------------------
 \begin{frame}{Metodologia}
 \setstretch{1.2}
+\setlength\leftmargini{1em}
 \begin{block}{Implementação}
 \justifying
 \begin{itemize}
 \item Biblioteca OpenCV; %\cite{Intel2010}. 
 \item Linguagens de programação C++ e Python;
-\item Código disponível em \url{https://bitbucket.org/moacirponti/imagefeatureextraction/overview}. 
+\item Código disponível em \footnotesize{\url{https://bitbucket.org/moacirponti/imagefeatureextraction/overview}}. 
 \end{itemize}
 \end{block}
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Metodologia}
 \setstretch{1.2}
+\setlength\leftmargini{1em}
 \begin{block}{Bases de imagens}
 \justifying
 
@@ -696,6 +776,7 @@ Investigar métodos capazes de descrever as propriedades das imagens.
 %-----------------------------------------------------------------------------
 \begin{frame}{Metodologia}
 \setstretch{1.2}
+\setlength\leftmargini{1em}
 \begin{block}{Bases de imagens}
 \justifying
 \begin{itemize}
@@ -727,6 +808,7 @@ Investigar métodos capazes de descrever as propriedades das imagens.
 %-----------------------------------------------------------------------------
 \begin{frame}{Metodologia}
 \setstretch{1.2}
+\setlength\leftmargini{1em}
 \begin{block}{Experimentos}
 \justifying
 \begin{itemize}
@@ -739,6 +821,7 @@ Investigar métodos capazes de descrever as propriedades das imagens.
 %----------------------------------------------------------------------------- 
 \begin{frame}{Metodologia}
 \setstretch{1.2}
+\setlength\leftmargini{1em}
 \begin{block}{Análise dos dados}
 \justifying
 \begin{itemize}
@@ -753,30 +836,33 @@ Investigar métodos capazes de descrever as propriedades das imagens.
 %-----------------------------------------------------------------------------
 \begin{frame}{Metodologia}
 \setstretch{1.2}
+\setlength\leftmargini{1em}
 \begin{block}{Avaliação - F1Score}
 \justifying
 Efetividade da classificação em cenários desbalanceados. 
 % Pode efetivamente avaliar a performance de classificação em cenários desbalanceados. 
-\\
+\begin{itemize}
 
-A precisão (medida da exatidão): dos exemplos classificados como positivos, quantos realmente são.
+\item Precisão (exatidão): dos exemplos classificados como positivos, quantos realmente são.
+\only<1>{
+\begin{equation*}
+  P = \frac{VP}{VP + FP}
+\end{equation*}
+}
 
-\begin{equation}
-  P = \frac{VP}{VP + FP},
-  \label{precisao}
-\end{equation}
-
-A revocação é a medida de completude: quantos exemplos positivos foram corretamente classificados como tal. 
-
-\begin{equation}
+\item Revocação (completude): quantos exemplos positivos foram corretamente classificados como tal. 
+\only<1>{
+\begin{equation*}
   R = \frac{VP}{VP + FN}
-  \label{revocacao}
-\end{equation}
+\end{equation*}
+}
+\end{itemize}
 
-\begin{equation}
+\only<2>{
+\begin{equation*}
   F1 = 2 \frac{PR}{P+R}
-  \label{medidaf}
-\end{equation}
+\end{equation*}
+}
 \end{block}
 \end{frame}
 %-----------------------------------------------------------------------------
@@ -785,6 +871,7 @@ A revocação é a medida de completude: quantos exemplos positivos foram corret
 
 \begin{frame}{Metodologia}
 \setstretch{1.2}
+\setlength\leftmargini{1em}
 \begin{block}{Avaliação - Friedman}
 \begin{itemize}
 \item Determinar se há diferença significante em uma amostra de resultados gerados;
@@ -797,6 +884,7 @@ A revocação é a medida de completude: quantos exemplos positivos foram corret
 %-----------------------------------------------------------------------------
 \begin{frame}{}
 \setstretch{1.2}
+\setlength\leftmargini{1em}
 \begin{block}{Avaliação - Mahalanobis}  %\cite{mahalanobis2000}
 Distância entre a média das classes e a variância dentro das classes. Baseia na correlação entre as variáveis e pode ser definida por
 \begin{equation*}
@@ -808,6 +896,7 @@ Distância entre a média das classes e a variância dentro das classes. Baseia 
 %-----------------------------------------------------------------------------
 \subsection{Resultados esperados}
 \begin{frame}{Resultados Esperados}
+\setlength\leftmargini{0em}
 
 \begin{itemize}
 \item \textit{Pré-processamento} de imagens que caracterizem melhor aspectos de suas classes, aumentando a variância entre as classes quando comparado com as imagens originais.
@@ -865,6 +954,7 @@ Sem. & 1\textordmasculine\ Sem. & 2\textordmasculine\ Sem. & 1\textordmasculine\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Resultados Preliminares}
 \begin{frame}{Resultados Preliminares}
+\setlength\leftmargini{1em}
 \renewcommand{\tabcolsep}{0.04cm}
 \begin{figure}[!h]
  \begin{center}
@@ -909,6 +999,9 @@ Sem. & 1\textordmasculine\ Sem. & 2\textordmasculine\ Sem. & 1\textordmasculine\
 %-----------------------------------------------------------------------------
 \subsection{Resultados}
 \begin{frame}{Resultados Preliminares}
+\setlength\leftmargini{0em}
+\setstretch{1.2}
+\justifying
 Classes com maior dificultade de diferenciação, havendo alta taxa de sobreposição de intensidades de cores e texturas.
 \begin{figure}[!htb]
  \begin{center}
@@ -919,11 +1012,13 @@ Classes com maior dificultade de diferenciação, havendo alta taxa de sobreposi
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Resultados Preliminares - Melhor}
+\setlength\leftmargini{0em}
+\justifying
 \begin{itemize}
 \item Ganho estatístico da medida-F, quando comparado à geração de exemplos artificiais no espaço de atributos; % (ou seja, depois que as características já foram extraídas das imagens)
 % \item Descritor ACC, conversão MSB e operação de pré-processamento combinação. 
 \end{itemize}
-\vspace{-0.2cm}
+\vspace{-0.3cm}
 \begin{figure}[htb]
  \begin{center}
    \includegraphics[width=0.7\linewidth]{\detokenize {figuras/resultado-melhor4.png}}
@@ -933,6 +1028,9 @@ Classes com maior dificultade de diferenciação, havendo alta taxa de sobreposi
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Resultados Preliminares - Pior}
+\setlength\leftmargini{0em}
+\setstretch{1.2}
+\justifying
 \begin{figure}[htb]
  \begin{center}
    \includegraphics[width=0.8\linewidth]{\detokenize {figuras/resultado-pior1.png}}
@@ -945,17 +1043,25 @@ Classes com maior dificultade de diferenciação, havendo alta taxa de sobreposi
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Resultados Preliminares}
+\setlength\leftmargini{0em}
 \setstretch{1.2}
+\justifying
 \begin{itemize}
 \item Melhores operações: todas, apenas mistura e apenas composição;
 \item Piores: apenas borramento, ruído ou \textit{unsharp masking};
 \vspace{2pt}
 \item Melhor extrator: ACC;
 \item Piores: CCV e GCH;
+% \vspace{2pt}
+% \item Melhor quantizador: MSB;
+% \item Piores: CCV e GCH;
 \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Resultados Preliminares}
+\setlength\leftmargini{0em}
+\setstretch{1.2}
+\justifying
 \begin{itemize}
 \item Teste de Friedman para todas as execuções das melhores operações. 
 \item P-valor = $4.24E^{-11}$. Hipótese nula rejeitada;
@@ -976,6 +1082,9 @@ Classes com maior dificultade de diferenciação, havendo alta taxa de sobreposi
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Resultados Preliminares}
+\setlength\leftmargini{0em}
+\setstretch{1.2}
+\justifying
 
 \begin{itemize}
 \item Replicação: SRS - \textit{Simple Random Sampling};
@@ -990,25 +1099,31 @@ Classes com maior dificultade de diferenciação, havendo alta taxa de sobreposi
 \end{figure}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Resultados Preliminares} % Novos resultados
-
-% cnn balanceada, desbalanceada, rebalanceada
-
-Adicionar aqui os novos resultados
-
+\begin{frame}{Resultados Preliminares - CNN}
+\begin{table}
+\caption{CNN para classes praia e montanha da base COREL-1000.}
+  \begin{tabular}{c|c}
+    Algoritmos    &   Medida F1 \\ \hline
+    Original      &   0.708  \\
+    Desbalanceada &   0.577  \\
+    Rebalanceada  &   0.677  \\
+  \end{tabular}
+\end{table}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Artigo}
 \begin{frame}{Artigo na Neurocomputing}
-\setstretch{1.2}
+\setstretch{1.5}
 \begin{block}{}
 \justifying
-Ponti, M.; Nazaré, T; Thumé, G. Image quantization as a dimensionality reduction procedure in color and texture feature extraction, submitted to Neurocomputing, 2014.
+Ponti, M.; Nazaré, T; Thumé, G. \textbf{Image quantization as a dimensionality reduction procedure in color and texture feature extraction}, submitted to Neurocomputing, 2014.
 \end{block}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Próximos Passos}
+\setlength\leftmargini{0em}
 \setstretch{1.2}
+\justifying
 \begin{frame}{Próximos Passos}
   \begin{itemize}
   \item Analisar as características latentes que as redes neurais de convolução conseguem extrair
@@ -1028,6 +1143,17 @@ Ponti, M.; Nazaré, T; Thumé, G. Image quantization as a dimensionality reducti
 
 \end{frame}
 %-----------------------------------------------------------------------------
+\begin{frame}{Próximos Passos}
+\setlength\leftmargini{0em}
+\setstretch{1.2}
+\justifying
+  \begin{itemize}
+  \item Desbalancear as 10 classes da COREL-1000 em escada;
+  \item Utilizar todas as classes com apenas 1 desbalanceada;
+  \item Analisar o treinamento da CNN para as 3 bases bem discriminadas.
+  \end{itemize}
+\end{frame}
+%-----------------------------------------------------------------------------
 \begin{frame}{Agradecimentos}
 \begin{columns}
   \begin{column}{0.5\textwidth}
@@ -1039,15 +1165,6 @@ Ponti, M.; Nazaré, T; Thumé, G. Image quantization as a dimensionality reducti
     \includegraphics[width=0.6\columnwidth]{figuras/brasao_usp_pb}
   \end{column}
 \end{columns}
-\end{frame}
-%-----------------------------------------------------------------------------
-\begin{frame}{Próximos Passos}
-\setstretch{1.2}
-  \begin{itemize}
-  \item Desbalancear as 10 classes da COREL-1000 em escada;
-  \item Utilizar todas as classes com apenas 1 desbalanceada;
-  \item Analisar o treinamento da CNN para as 3 bases bem discriminadas.
-  \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
 \section{Referências}
