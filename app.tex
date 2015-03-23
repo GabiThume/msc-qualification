@@ -1,8 +1,3 @@
-% Todo
-% - Falar da Caffe
-%
-%
-
 \documentclass{beamer}
 \mode<presentation>{
   %   \usetheme{CambridgeUS}      % or try Darmstadt, Madrid, Warsaw, ...
@@ -12,17 +7,16 @@
 
   % \definecolor{myblue}{RGB}{23, 91, 127}
   \definecolor{myblue}{RGB}{24, 71, 160}
-
   \setbeamercolor{structure}{fg=myblue}
   \usefonttheme{default}
   \setbeamertemplate{navigation symbols}{}
   %\setbeamertemplate[compatibility=false, numbered]{caption}
   \setbeamertemplate{itemize items}[default]
   \setbeamertemplate{enumerate items}[default]
-
   \defbeamertemplate*{title page}{customized}[1][]{
   \centering
    \begin{beamercolorbox}[rounded=true,shadow=true,leftskip=1cm,colsep*=.75ex]{title}
+  \centering
    \usebeamerfont{title}\inserttitle\par
     \end{beamercolorbox}
      \par\medskip\medskip\medskip
@@ -61,7 +55,6 @@
     \begin{beamercolorbox}[colsep=1.5pt]{lower separation line foot}
     \end{beamercolorbox}
   }
-
 }
 
 \usepackage{ragged2e}
@@ -164,10 +157,10 @@ Universidade de São Paulo \\ }
 \pause
 \item Extração de características;
 \pause
-\item Algoritmos de aprendizado de máquina;
-\item Generalização para classificar novos exemplos;
+\item Algoritmos de aprendizado de máquina: modelo de representação;
+\item Generalização permite classificar novos exemplos;
 \pause
-\item Conjuntos de características que dificultam a diferenciação entre as classes;
+\item Características que dificultam a diferenciação entre as classes;
 \item Encontrar as características que melhor discriminam as classes.
 \end{itemize}
 \end{frame}
@@ -273,7 +266,7 @@ Universidade de São Paulo \\ }
 \begin{itemize}
 \item Métodos de processamento e preparação de imagens antes da extração dessas características;
 \item Podem revelar características latentes, não visíveis nas imagens originais;
-\item O enfoque em realçar determinadas características que possam melhor descrever certas classes, utilizando diversos algoritmos sobre as imagens originais.
+\item Foco: \emph{realçar características que possam melhor descrever certas classes, utilizando algoritmos sobre as imagens originais.}
 \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
@@ -292,23 +285,29 @@ Universidade de São Paulo \\ }
     % }
     \item (Rocha et al., 2010) 98\% de acurácia após aquisição, pré-processamento e segmentação; % frutas
     \item (Kanan e Cottrell, 2012) Quantização pode impactar a classificação;
-    \item (Ponti et al., 2014) Quantização permite obter vetores de caractísticas mais compactos e com maior capacidade de discriminação entre classes;
-    \item[]  {Continuidade: analisar redes que aprendem quais operações geram as características.}
+    \item (Ponti et al., 2014) Quantização permite obter vetores de características mais compactos e com maior capacidade de discriminação entre classes;
+    \item[]  {Continuação: analisar redes que aprendem quais operações geram essas características.}
   \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Motivação - Desbalanceamento de classes}
 \setlength\leftmargini{0em}
 \justifying
-\setstretch{1.2}
+% \setstretch{1.2}
   \begin{itemize}
     \item Diferença entre o número de exemplos disponíveis;
     \item Imagens representam eventos importantes mas menos frequentes;
-    \item Obstáculo;
-    \item Métodos de transformação do espaço de características e de 
-    classificação assumem que as classes da base estão balanceadas;
-    \item Proposta: geração de imagens artificiais. %para rebalancear a base, possivelmente melhorando o modelo criado para a classificação
+    \item Obstáculo, métodos de transformação do espaço e de 
+    classificação assumem que a base está balanceada;
+    \item Foco: \emph{geração de imagens artificiais a partir do realce de características das imagens da classe minoritária.}
   \end{itemize}
+  \begin{figure}[htbp]
+ \begin{center}
+   \includegraphics[width=.4\linewidth]{figuras/imagemgerada.jpg}
+ \caption{Imagem artificialmente gerada.}
+ \end{center}
+\end{figure}
+
 \end{frame}
 %-----------------------------------------------------------------------------
 % \section{Proposta}
@@ -336,7 +335,7 @@ Universidade de São Paulo \\ }
     \justifying
     \begin{itemize}
       \item Balancear as classes;
-      \item Melhorar a acurácia de algoritmos de classificação, versus geração de exemplos artificiais no espaço de atributos
+      \item Melhorar a acurácia, versus geração de exemplos artificiais no espaço de atributos.
     \end{itemize}
   \end{block}
 \end{frame}
@@ -355,22 +354,22 @@ Universidade de São Paulo \\ }
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Objetivos Específicos}
-\setstretch{1.2}
+% \setstretch{1.2}
 \setlength\leftmargini{1em}
 \justifying
     \begin{itemize}
       \item Analisar: 
         \begin{itemize}
           \item impacto de métodos canônicos na classificação;
-          \item aprendizado de bases bem discriminadas por CNN.
+          \item aprendizado de bases bem discriminadas por redes de convolução.
         \end{itemize}
-      \item Tornar as características latentes visíveis. Aumentar a variância entre as classes;% com o auxílio dos métodos canônicos e CNN;
-      \item Gerar imagens artificiais a partir das imagens pertencentes às classes minoritárias, compensando o desbalanceamento. 
+      \item Tornar as características latentes visíveis;% com o auxílio dos métodos canônicos e CNN;
+      \item Gerar imagens artificiais a partir das imagens pertencentes às classes minoritárias. 
       \pause
         \begin{itemize}
-          \item Resultados preliminares 
-          \item Estudo das características latentes encontradas no treinamento da classe minoritária em uma CNN.
-          \item Matriz de características aprendida por RBM para verificar a relevância das imagens geradas e as imagens originais.
+          \item Resultados preliminares;
+          % \item Estudo das características latentes encontradas no treinamento da classe minoritária de uma rede de convolução;
+          \item Matriz de características aprendida por uma máquina de Boltzmann restrita para verificar a relevância das imagens geradas e as imagens originais.
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -410,7 +409,7 @@ Universidade de São Paulo \\ }
 \begin{figure}[htbp]
  \begin{center}
    \includegraphics[width=.5\linewidth]{figuras/convolucao.jpg}
- \caption{Convolução com kernel já rotacionado}
+ \caption{Convolução com filtro previamente rotacionado.}
  \end{center}
 \end{figure}
 \end{frame}
@@ -473,45 +472,6 @@ Universidade de São Paulo \\ }
 \end{figure}
 \end{frame}
 %-----------------------------------------------------------------------------
-\subsection{Extração de características}
-\begin{frame}{Extração de Características}
-\begin{figure}
-    \includegraphics[height=0.75\textheight]{figuras/geral.pdf}
-\end{figure}
-\end{frame}
-%-----------------------------------------------------------------------------
-\begin{frame}{Extração de Características}
-\setlength\leftmargini{0em}
-\justifying
-\begin{itemize}
-\item Descrever as informações visuais relevantes em um vetor de características;
-\item Entrada para o classificador de padrões;
-% Exemplo: importante para a discriminação entre classes de algas é a forma. 
-\item Salientar as diferenças entre imagens de classes distintas e suavizar possíveis diferenças de imagens da mesma classe (Ex. algas - forma).
-\end{itemize}
-\setlength\leftmargini{0em}
-\begin{description}
-\item [Textura:] suavidade, aspereza e uniformidade. Ex. entropia;
-\item [Forma:] características externas. Ex. curvatura;
-\item [Cor:] distribuição espacial de cores na imagem. Ex. histograma.
-\end{description}
-\end{frame}
-%-----------------------------------------------------------------------------
-\begin{frame}{Extração de Características}
-\setlength\leftmargini{1.5em}
-\begin{itemize}
-\item[GCH]<1> {\emph{Histograma global de cor} - $N$D (intensidades).} % Mais simples representação. }
-
-\item[CCV]<2> {\emph{Vetor de coerência de cor}. Classifica os pixels da imagem em coerentes e incoerentes de acordo com um \textit{threshold}, computa e concatena os histogramas - $2N$D.}
-
-\item[BIC]<3> {\emph{Classificação de pixels de borda e interior}. Mesma cor que seus vizinhos, é pixel de interior. Computa dois histogramas - $2N$D.}
-
-\item[ACC]<4> {\emph{Auto-correlograma de cor}: captura a correlação espacial entre cores idênticas. Probabilidade de encontrar dois pixels com a mesma cor, a uma distância $d$ um do outro. 1, 3, 5 e 7 - $4N$D.}
-
-\item[Haralick]<5> {Entropia, homogeneidade, contraste, correlação, probabilidade máxima e uniformidade - 6D.}
-\end{itemize}
-\end{frame}
-%-----------------------------------------------------------------------------
 \subsection{Redes de Convolução}
 \begin{frame}{Redes Neurais}
 \begin{figure}
@@ -524,12 +484,10 @@ Universidade de São Paulo \\ }
 \setlength\leftmargini{0em}
 \justifying
   \begin{itemize}
-  \item Compreendem todo o pipeline;
-  \item Aprendem as \textbf{características latentes} de imagens;
   \item Estado da arte da classificação, reconhecimento e localização de objetos;
   \item Imagens como treinamento para inferir as regras para a classificação;
-  \item Conhecimento através da experiência: ao tentar uma solução e errar, aprendem e podem tentar novamente. 
-  \item Aprendizado: ajuste dos pesos entre a saída esperada e a produzida. %pesos
+  \item Conhecimento através da experiência: ao tentar uma solução e errar, aprendem e podem tentar novamente;
+  \item Aprendizado: ajuste dos pesos entre a saída esperada e a produzida.
   \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
@@ -547,23 +505,17 @@ Universidade de São Paulo \\ }
 \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
-\begin{frame}{Redes Neurais}
+\begin{frame}{Redes de Convolução}
 \setstretch{1.2}
 \setlength\leftmargini{0em}
 \justifying
-  \begin{itemize}
-    \item Redes neurais de convolução (CNN - \cite{lecun1998})
-    \begin{itemize}
-        \item<2> Camadas de neurônios para aprender as melhores características que diferenciam as classes;
-        \item<2> Realçar essas caracterísiticas nas imagens;
-    \end{itemize}
-    \item <1,3> Máquinas de Boltzmann restritas (RBM)
-    \begin{itemize}
-        \item<3> Aprende a representação das imagens de entrada;
-        \item<3> Definir quais imagens são relevantes para o aprendizado.
-    \end{itemize}
-  \end{itemize}
 \textbf{Aprendem versões processadas das imagens de entrada: os filtros aprendidos são os que melhor diferenciam as classes.}
+\begin{itemize}
+  \item Multiplicações de um filtro espacial pela imagem de entrada, resultando em um mapa de características ativadas; 
+  \item Vetor de parâmetros capaz de aprender;
+  \item As características ativadas são diferentes;
+  \item Camada de convolução = muitas convoluções em paralelo, dado que um filtro é capaz de extrair apenas um tipo de característica.
+\end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Redes de Convolução}
@@ -598,24 +550,6 @@ Universidade de São Paulo \\ }
   \caption{Terceira, quarta e quinta camada. \\ Fonte: \cite{Zeiler2013}}
  \end{center}
 \end{figure}
-\end{frame}
-%-----------------------------------------------------------------------------
-\subsection{Máquina de Boltzmann restrita}
-\begin{frame}{Máquina de Boltzmann restrita}
-\setlength\leftmargini{0em}
-\justifying
- \begin{figure}[hbpt]
- \begin{center}
-   \includegraphics[width=.4\linewidth]{{figuras/rbm.png}}
- \end{center}
-  % \caption{Quarta e quinta camada. \\ Fonte: \cite{Zeiler2013}}
-\end{figure}
-\begin{itemize}
-  \item Rede neural estocástica que treina um modelo a partir dos vetores de entrada -- memória associativa;
-  \item Pixels: unidades visíveis. Detectores de características: unidades ocultas;
-  \item Inicia em estado aleatório e atualiza os pesos até a distribuição estar em equilíbrio. Pode ser usada como entrada da CNN.;
-  \item Mais simples, convenientes para a verificação da relevância de uma imagem para o aprendizado.
-\end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
 \subsection{Desbalanceamento de classes}
@@ -686,6 +620,86 @@ Universidade de São Paulo \\ }
         \item (Chawla et al., 2002) \textbf{Diferentes estratégias para criar exemplos sintéticos podem melhorar a performance da classificação;}
         \item Utilizado para comparação.
     \end{itemize}
+\end{frame}
+%-----------------------------------------------------------------------------
+\subsection{Máquina de Boltzmann restrita}
+\begin{frame}{Máquina de Boltzmann restrita}
+\begin{figure}
+    \includegraphics[height=0.75\textheight]{figuras/geral.pdf}
+\end{figure}
+\end{frame}
+\begin{frame}{Máquina de Boltzmann restrita}
+\setlength\leftmargini{0em}
+\justifying
+\begin{itemize}
+  \item Pixels: unidades visíveis. Camada oculta: correlação entre os pixels;
+  \item Aprendem representações das imagens;
+  \item Verificação da relevância de uma imagem para o aprendizado;
+  \item Utilizar apenas um neurônio oculto, com a matriz de pesos como memória associativa.
+  \item Informação em uma imagem artificialmente gerada.
+\end{itemize}
+ \begin{figure}[hbpt]
+ \begin{center}
+   \includegraphics[width=.3\linewidth]{{figuras/rbm.png}}
+ \end{center}
+\end{figure}
+\end{frame}
+%-----------------------------------------------------------------------------
+\begin{frame}{Redes Neurais}
+\setstretch{1.2}
+\setlength\leftmargini{0em}
+\justifying
+  \begin{itemize}
+    \item Redes neurais de convolução (CNN)% - \cite{lecun1998})
+    \begin{itemize}
+    \item Compreendem todo o pipeline com camadas de neurônios;
+    \item Aprendem as melhores características que diferenciam as classes, utilizando convolução;
+    \end{itemize}
+    \item Máquinas de Boltzmann restritas (RBM)
+    \begin{itemize}
+        \item Aprende a representação das imagens de entrada;
+        \item Definir quais imagens são relevantes para o aprendizado.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+%-----------------------------------------------------------------------------
+\subsection{Extração de características}
+\begin{frame}{Extração de Características}
+\begin{figure}
+    \includegraphics[height=0.75\textheight]{figuras/geral.pdf}
+\end{figure}
+\end{frame}
+%-----------------------------------------------------------------------------
+\begin{frame}{Extração de Características}
+\setlength\leftmargini{0em}
+\justifying
+\begin{itemize}
+\item Descrever as informações visuais relevantes em um vetor de características;
+\item Entrada para o classificador de padrões;
+% Exemplo: importante para a discriminação entre classes de algas é a forma. 
+\item Salientar as diferenças entre imagens de classes distintas e suavizar possíveis diferenças de imagens da mesma classe (Ex. algas - forma).
+\end{itemize}
+\setlength\leftmargini{0em}
+\begin{description}
+\item [Textura:] suavidade, aspereza e uniformidade. Ex. entropia;
+\item [Forma:] características externas. Ex. curvatura;
+\item [Cor:] distribuição espacial de cores na imagem. Ex. histograma.
+\end{description}
+\end{frame}
+%-----------------------------------------------------------------------------
+\begin{frame}{Extração de Características}
+\setlength\leftmargini{1.5em}
+\begin{itemize}
+\item[GCH]<1> {\emph{Histograma global de cor} - $N$D (intensidades).} % Mais simples representação. }
+
+\item[CCV]<2> {\emph{Vetor de coerência de cor}. Classifica os pixels da imagem em coerentes e incoerentes de acordo com um \textit{threshold}, computa e concatena os histogramas - $2N$D.}
+
+\item[BIC]<3> {\emph{Classificação de pixels de borda e interior}. Mesma cor que seus vizinhos, é pixel de interior. Computa dois histogramas - $2N$D.}
+
+\item[ACC]<4> {\emph{Auto-correlograma de cor}: captura a correlação espacial entre cores idênticas. Probabilidade de encontrar dois pixels com a mesma cor, a uma distância $d$ um do outro. 1, 3, 5 e 7 - $4N$D.}
+
+\item[Haralick]<5> {Entropia, homogeneidade, contraste, correlação, probabilidade máxima e uniformidade - 6D.}
+\end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
 \section{Metodologia}
