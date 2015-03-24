@@ -59,6 +59,8 @@
 
 \usepackage{ragged2e}
 \usepackage{lipsum}
+\usepackage[sort, numbers]{natbib} 
+% \usepackage[style=alphabetic]{biblatex}
 
 \makeatletter
 \renewcommand{\itemize}[1][]{%
@@ -283,9 +285,9 @@ Universidade de São Paulo \\ }
     %       \item Extração e classificação de imagens.
     %   \end{itemize}
     % }
-    \item (Rocha et al., 2010) 98\% de acurácia após aquisição, pré-processamento e segmentação; % frutas
-    \item (Kanan e Cottrell, 2012) Quantização pode impactar a classificação;
-    \item (Ponti et al., 2014) Quantização permite obter vetores de características mais compactos e com maior capacidade de discriminação entre classes;
+    \item 98\% de acurácia após aquisição, pré-processamento e segmentação (Rocha et al., 2010); % frutas
+    \item Quantização pode impactar a classificação (Kanan e Cottrell, 2012);
+    \item Quantização permite obter vetores de características mais compactos e com maior capacidade de discriminação entre classes (Ponti et al., 2014);
     \item[]  {Continuação: analisar redes que aprendem quais operações geram essas características.}
   \end{itemize}
 \end{frame}
@@ -364,7 +366,7 @@ Universidade de São Paulo \\ }
           \item aprendizado de bases bem discriminadas por redes de convolução.
         \end{itemize}
       \item Tornar as características latentes visíveis;% com o auxílio dos métodos canônicos e CNN;
-      \item Gerar imagens artificiais a partir das imagens pertencentes às classes minoritárias. 
+      \item Gerar imagens artificiais. 
       \pause
         \begin{itemize}
           \item Resultados preliminares;
@@ -385,7 +387,7 @@ Universidade de São Paulo \\ }
 \subsection{Pré-processamento}
 \begin{frame}{Pré-processamento de Imagens}
 \begin{figure}
-    \includegraphics[height=0.75\textheight]{figuras/geral.pdf}
+    \includegraphics[height=0.75\textheight]{figuras/geral_metodos.pdf}
 \end{figure}
 \end{frame}
 %-----------------------------------------------------------------------------
@@ -408,7 +410,7 @@ Universidade de São Paulo \\ }
 \end{itemize}
 \begin{figure}[htbp]
  \begin{center}
-   \includegraphics[width=.5\linewidth]{figuras/convolucao.jpg}
+   \includegraphics[width=.5\linewidth]{figuras/convolucao.png}
  \caption{Convolução com filtro previamente rotacionado.}
  \end{center}
 \end{figure}
@@ -473,9 +475,9 @@ Universidade de São Paulo \\ }
 \end{frame}
 %-----------------------------------------------------------------------------
 \subsection{Redes de Convolução}
-\begin{frame}{Redes Neurais}
+\begin{frame}{Redes de Convolução}
 \begin{figure}
-    \includegraphics[height=0.75\textheight]{figuras/geral.pdf}
+    \includegraphics[height=0.75\textheight]{figuras/geral_cnn.pdf}
 \end{figure}
 \end{frame}
 %-----------------------------------------------------------------------------
@@ -484,23 +486,22 @@ Universidade de São Paulo \\ }
 \setlength\leftmargini{0em}
 \justifying
   \begin{itemize}
-  \item Estado da arte da classificação, reconhecimento e localização de objetos;
   \item Imagens como treinamento para inferir as regras para a classificação;
   \item Conhecimento através da experiência: ao tentar uma solução e errar, aprendem e podem tentar novamente;
   \item Aprendizado: ajuste dos pesos entre a saída esperada e a produzida.
   \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
-\begin{frame}{Deep Learning}
+\begin{frame}{Redes de Convolução - Deep Learning}
 \setstretch{1.2}
 \setlength\leftmargini{0em}
-\justifying
+\justifying 
 \begin{itemize}
   \item Reconhecimento humano de novos padrões - capacidade de generalização (hierarquias);% \cite{thesisDeep}. 
   \item Simular o funcionamento do cérebro humano por meio de camadas;
-  \item Redes neurais profundas possuem uma estrutura de muitas camadas -- duas ou mais ocultas; %\cite{neuralNielsen}. 
+  \item Redes neurais profundas possuem duas ou mais ocultas; %\cite{neuralNielsen}. 
   \item Subdividem em problemas mais simples de serem resolvidos;
-  \item Apesar de representarem o estado da arte em visão computacional, um bom entendimento das suas propriedades ainda está faltando.
+  \item Representam o estado da arte em visão computacional, mas está faltando o entendimento das suas propriedades.
 %\cite{Schmidhuber2014}.
 \end{itemize}
 \end{frame}
@@ -510,44 +511,55 @@ Universidade de São Paulo \\ }
 \setlength\leftmargini{0em}
 \justifying
 \textbf{Aprendem versões processadas das imagens de entrada: os filtros aprendidos são os que melhor diferenciam as classes.}
+\vspace{1cm}
 \begin{itemize}
-  \item Multiplicações de um filtro espacial pela imagem de entrada, resultando em um mapa de características ativadas; 
+  % \item Estado da arte da classificação, reconhecimento e localização de objetos;
+  \item Multiplicações de um filtro espacial pela imagem de entrada, resultando em um \emph{mapa de características ativadas}; 
   \item Vetor de parâmetros capaz de aprender;
-  \item As características ativadas são diferentes;
-  \item Camada de convolução = muitas convoluções em paralelo, dado que um filtro é capaz de extrair apenas um tipo de característica.
+  % \item As características ativadas são diferentes;
+  \item Um filtro é capaz de extrair apenas um tipo de característica;
+  \item Camada de convolução = muitas convoluções em paralelo.
 \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
 \begin{frame}{Redes de Convolução}
  \begin{figure}[hbpt]
  \begin{center}
-   \includegraphics[width=1\linewidth]{figuras/CNNArchitecture.jpg}
+   \includegraphics[width=0.9\linewidth]{figuras/CNNArchitecture.png}
  \end{center}
-  \caption{Arquitetura de uma CNN. \\ Fonte: http://parse.ele.tue.nl/education/cluster2}
+  \caption{Arquitetura de uma CNN. Fonte:~\tiny{\url{http://parse.ele.tue.nl/education/cluster2}}}
 \end{figure}
 \end{frame}
 % A simulação desse modelo inspirado biologicamente utilizada hoje é de \citet{lecun1998} e chama-se Rede Neural de Convolução (CNN ou ConvNet). Eles simplificaram tal arquitetura para utilizar um algoritmo de retropropagação para o treino. Desde então, essas redes vêm sendo utilizadas para detecção, reconhecimento, restauração, remoção de ruído e segmentação de imagens e vídeos, além de sua aplicação em áudio. Um exemplo de utilização dessa rede inspirada no modelo de LeCun foi desenvolvida pela empresa Google, com o objetivo de detectar faces e placas de carros para proteger a privacidade nas imagens de StreetView \cite{google09}. 
 \begin{frame}{Redes de Convolução}
  \begin{figure}[hbpt]
  \begin{center}
-   \includegraphics[width=1\linewidth]{{figuras/feature-1-2.png}}
-  \caption{Primeira e segunda camada. \\ Fonte: \cite{Zeiler2013}}
+   \includegraphics[width=0.9\linewidth]{{figuras/feature-1-2.png}}
+  \caption{Primeira: características de borda. Segunda camada: formas simples e texturas similares. Fonte:~\cite{Zeiler2013}}
  \end{center}
 \end{figure}
 \end{frame}
 \begin{frame}{Redes de Convolução}
  \begin{figure}[hbpt]
  \begin{center}
-   \includegraphics[width=0.55\linewidth]{{figuras/feature-3.png}}
-%   \caption{Terceira camada. \\ Fonte: \cite{Zeiler2013}}
-%  \end{center}
-% \end{figure}
-% \end{frame}
-% \begin{frame}{Redes de Convolução}
-%  \begin{figure}[hbpt]
-%  \begin{center}
-   \includegraphics[width=0.5\linewidth]{{figuras/feature-4-5.png}}
-  \caption{Terceira, quarta e quinta camada. \\ Fonte: \cite{Zeiler2013}}
+   \includegraphics[width=0.9\linewidth]{{figuras/feature-3.png}}
+  \caption{Terceira camada. Fonte:~\cite{Zeiler2013}}
+ \end{center}
+\end{figure}
+\end{frame}
+\begin{frame}{Redes de Convolução}
+ \begin{figure}[hbpt]
+ \begin{center}
+   \includegraphics[width=0.9\linewidth]{{figuras/feature-4-5.png}}
+  \caption{Quarta e quinta camada. Complexos pedaços das imagens ativados. Fonte:~\cite{Zeiler2013}}
+ \end{center}
+\end{figure}
+\end{frame}
+\begin{frame}{Redes de Convolução}
+ \begin{figure}[hbpt]
+ \begin{center}
+   \includegraphics[width=0.9\linewidth]{{figuras/feature-4-5_blur.png}}
+  \caption{Quarta e quinta camada. Insere abstração e invariância. Estruturas discriminantes. Fonte:~\cite{Zeiler2013}}
  \end{center}
 \end{figure}
 \end{frame}
@@ -555,7 +567,7 @@ Universidade de São Paulo \\ }
 \subsection{Desbalanceamento de classes}
 \begin{frame}{Desbalanceamento de classes}
 \begin{figure}
-    \includegraphics[height=0.75\textheight]{figuras/geral.pdf}
+    \includegraphics[height=0.75\textheight]{figuras/geral_geracao.pdf}
 \end{figure}
 \end{frame}
 %-----------------------------------------------------------------------------
@@ -566,10 +578,14 @@ Universidade de São Paulo \\ }
 \setstretch{1.2}
 \begin{itemize}
   \item Número desbalanceado de exemplos. Majoritárias x minoritárias.
-  \item Abordagens
+  \item Abordagens:
     \begin{itemize}
-        \item Pré-processamento dos dados: reamostrar os dados;
-        \item Modificar métodos de aprendizagem: adicionar funções de custo na classificação.
+        \item \emph{Modificar métodos de aprendizagem:} adicionar funções de custo na classificação;
+        \item \emph{Pré-processamento ao reamostrar os dados:}
+      \begin{itemize}
+          \item Aumentar a minoritária;
+          \item Diminuir a majoritária.
+      \end{itemize}
     \end{itemize}
 \end{itemize}
 \end{frame}
@@ -580,7 +596,7 @@ Universidade de São Paulo \\ }
     \begin{itemize}
         \item Diminuir o número de elementos do conjunto;
         \item Podem remover informações essenciais dos dados originais;
-        \item Eliminar elementos da classe majoritária distantes da fronteira de decisão;
+        \item Eliminar elementos distantes da fronteira de decisão;
         \item Normalmente apresentam resultados piores.
         % \item Não há melhor para todos os cenários.
     \end{itemize}
@@ -597,7 +613,7 @@ Universidade de São Paulo \\ }
         \begin{itemize}
             \item Multiplica a diferença entre o vetor de características de um elemento e do seu vizinho mais próximo por um número [0-1];
             \item Adiciona ao vetor original, criando um novo elemento entre os dois vetores originais;
-            \item Aprendida como exemplo da classe minoritária;
+            \item Aprendido como exemplo da classe minoritária;
             \item Força uma região de decisão maior e mais geral;
         \end{itemize}
     \end{block}
@@ -609,7 +625,7 @@ Universidade de São Paulo \\ }
 \justifying
  \begin{figure}[hbpt]
  \begin{center}
-   \includegraphics[width=.6\linewidth]{{figuras/smote.jpeg}}
+   \includegraphics[width=.6\linewidth]{{figuras/smote.png}}
    % http://www.intechopen.com/books/advances-in-data-mining-knowledge-discovery-and-applications/selecting-representative-data-sets
  \end{center}
 \end{figure}
@@ -625,7 +641,7 @@ Universidade de São Paulo \\ }
 \subsection{Máquina de Boltzmann restrita}
 \begin{frame}{Máquina de Boltzmann restrita}
 \begin{figure}
-    \includegraphics[height=0.75\textheight]{figuras/geral.pdf}
+    \includegraphics[height=0.75\textheight]{figuras/geral_rbm.pdf}
 \end{figure}
 \end{frame}
 \begin{frame}{Máquina de Boltzmann restrita}
@@ -666,7 +682,7 @@ Universidade de São Paulo \\ }
 \subsection{Extração de características}
 \begin{frame}{Extração de Características}
 \begin{figure}
-    \includegraphics[height=0.75\textheight]{figuras/geral.pdf}
+    \includegraphics[height=0.75\textheight]{figuras/geral_extracao.pdf}
 \end{figure}
 \end{frame}
 %-----------------------------------------------------------------------------
@@ -690,15 +706,15 @@ Universidade de São Paulo \\ }
 \begin{frame}{Extração de Características}
 \setlength\leftmargini{1.5em}
 \begin{itemize}
-\item[GCH]<1> {\emph{Histograma global de cor} - $N$D (intensidades).} % Mais simples representação. }
+\item[GCH]<1> {\emph{Histograma global de cor} - $N$ (intensidades).} % Mais simples representação. }
 
-\item[CCV]<2> {\emph{Vetor de coerência de cor}. Classifica os pixels da imagem em coerentes e incoerentes de acordo com um \textit{threshold}, computa e concatena os histogramas - $2N$D.}
+\item[CCV]<2> {\emph{Vetor de coerência de cor}. Classifica os pixels da imagem em coerentes e incoerentes de acordo com um \textit{threshold}, computa e concatena os histogramas - $2N$.}
 
-\item[BIC]<3> {\emph{Classificação de pixels de borda e interior}. Mesma cor que seus vizinhos, é pixel de interior. Computa dois histogramas - $2N$D.}
+\item[BIC]<3> {\emph{Classificação de pixels de borda e interior}. Mesma cor que seus vizinhos, é pixel de interior. Computa dois histogramas - $2N$.}
 
-\item[ACC]<4> {\emph{Auto-correlograma de cor}: captura a correlação espacial entre cores idênticas. Probabilidade de encontrar dois pixels com a mesma cor, a uma distância $d$ um do outro. 1, 3, 5 e 7 - $4N$D.}
+\item[ACC]<4> {\emph{Auto-correlograma de cor}: captura a correlação espacial entre cores idênticas. Probabilidade de encontrar dois pixels com a mesma cor, a uma distância $d$ um do outro. 1, 3, 5 e 7 - $4N$.}
 
-\item[Haralick]<5> {Entropia, homogeneidade, contraste, correlação, probabilidade máxima e uniformidade - 6D.}
+\item[Haralick]<5> {Entropia, homogeneidade, contraste, correlação, probabilidade máxima e uniformidade - $6$.}
 \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
@@ -788,7 +804,7 @@ Universidade de São Paulo \\ }
 \item Explorar algoritmos de realce de características relevantes:
 \begin{itemize}
 \item Melhorar discriminação entre as classes;
-\item Cenários desbalanceados.
+\item Auxiliar no rebalanceamento.
 \end{itemize}
 \item Entrada: imagens originais das coleções disponíveis na literatura;
 \item Resultado: medidas estatísticas da classificação.
@@ -796,14 +812,22 @@ Universidade de São Paulo \\ }
 \end{block}
 \end{frame}
 %----------------------------------------------------------------------------- 
-\begin{frame}{Metodologia - Análise dos dados}
+\begin{frame}{Metodologia - Análise dos resultados}
 \setstretch{1.2}
 \setlength\leftmargini{1em}
 \begin{block}{}
 \justifying
 \begin{itemize}
-\item Comparar a classificação das imagens originais e as tratadas pelo método proposto;
-\item Comparar o método de rebalanceamento de classes com técnicas disponíveis na literatura, como o SMOTE.
+\item Comparar a classificação:
+\begin{itemize}
+\item Base original;
+\item Base realçada pelo método proposto.
+\end{itemize}
+\item Comparar os métodos:
+\begin{itemize}
+\item Geração artificial;
+\item Técnicas de sobreamostragem disponíveis na literatura, como o SMOTE.
+\end{itemize}
 \end{itemize}
 \end{block}
 \end{frame}
@@ -812,12 +836,12 @@ Universidade de São Paulo \\ }
 % Pode-se estender essa medida obtendo-se a \underline{acurácia $k$-fold}: medida de acerto baseada na divisão do conjunto de objetos em teste e treinamento, realizando a repetição dos experimentos $n$ vezes e obtendo a média e o desvio padrão. A acurácia de cada experimento é obtida pela Equação~\ref{eq:Accuracy}, que considera problemas de desbalanceamento de classes.
 %-----------------------------------------------------------------------------
 \begin{frame}{Metodologia - Avaliação}
-\setstretch{1.2}
+% \setstretch{1.2}
 \setlength\leftmargini{1em}
 \begin{block}{Medida F1}
 \justifying
 Problema da acurácia: minoritária sem resultados corretos. \\
-Performance da classificação em cenários desbalanceados.
+% Performance da classificação em cenários desbalanceados.
 \begin{itemize}
 
 \item Precisão (exatidão): dos exemplos classificados como positivos, quantos realmente são.
@@ -826,7 +850,6 @@ Performance da classificação em cenários desbalanceados.
   P = \frac{VP}{VP + FP}
 \end{equation*}
 \item Revocação (completude): exemplos positivos corretamente classificados como tal. 
-\vspace{-0.5em}
 \begin{equation*}
   R = \frac{VP}{VP + FN}
 \end{equation*}
@@ -845,12 +868,12 @@ Performance da classificação em cenários desbalanceados.
 \begin{frame}{Metodologia - Avaliação}
 \setstretch{1.2}
 \setlength\leftmargini{1em}
-\begin{block}{Friedman}
+\begin{block}{Teste de Friedman}
 \begin{itemize}
-\item Determinar se há diferença significante em uma amostra de resultados gerados;
+\item Determinar se há diferença significante entre os resultados gerados;
 \item Analisa as performances dos algoritmos e atribui um \textit{rank};
 \item A hipótese nula a ser testada é que não há diferença estatística relevante entre as observações;
-\item P-valor indica a significancia: quanto menor o seu valor, maior a evidência contra a hipótese nula (limiar de 0,05).
+\item P-valor indica essa significância: quanto menor o seu valor, maior a evidência contra a hipótese nula (limiar de 0,05).
 \end{itemize}
 \end{block}
 \end{frame}
@@ -860,7 +883,10 @@ Performance da classificação em cenários desbalanceados.
 \justifying
 \setlength\leftmargini{1em}
 \begin{block}{Mahalanobis}  %\cite{mahalanobis2000}
-Distância entre a média e a variância das classes. Baseia na correlação entre as variáveis e pode ser definida por
+Distância entre a média e a variância das classes. 
+\vspace{4pt}
+
+Baseia na correlação entre as variáveis e pode ser definida por
 \begin{equation*}
   D_m(x_i) = \sqrt{(x_i - \mu)C^{-1}(x_i-\mu)^T},
 \end{equation*}
@@ -876,10 +902,10 @@ Distância entre a média e a variância das classes. Baseia na correlação ent
 \begin{itemize}
 \item Melhorar a classificação, validando-a com a medida-F1. 
 \begin{itemize}
-\item \textit{Pré-processamento} de imagens que caracterizem melhor aspectos de suas classes, aumentando a variância entre as classes quando comparado com as imagens originais.
-\item \textit{Geração artificial de imagens} de classes minoritárias de forma a compensar o desbalanceamento natural das bases de dados.
+\item \textit{Pré-processamento} de imagens que caracterizem melhor aspectos de suas classes;
+\item \textit{Geração artificial de imagens} de classes minoritárias.
 \end{itemize}
-\item Analisar as características aprendidas com o treinamento de uma CNN com bases específicas; 
+\item Analisar as características aprendidas com a CNN em bases específicas; 
 \item Escolher imagens que adicionam informações (RBM);
 \item Testar bases naturalmente não balanceadas.
 \end{itemize}
@@ -933,7 +959,7 @@ Distância entre a média e a variância das classes. Baseia na correlação ent
 \begin{frame}[plain]{Descrição do Experimento}
 \begin{figure}[!htb]
  \begin{center}
-   \includegraphics[width=0.6\textheight]{\detokenize {figuras/flow_sub.pdf}}
+   \includegraphics[width=0.55\textheight]{\detokenize {figuras/flow_sub.pdf}}
  \end{center}
   \caption{Fluxo da geração artificial.}
 \end{figure}
@@ -944,7 +970,7 @@ Distância entre a média e a variância das classes. Baseia na correlação ent
 \setlength\leftmargini{0em}
 \setstretch{1.2}
 \justifying
-Classes com maior dificultade de diferenciação, havendo alta taxa de sobreposição de intensidades de cores e texturas.
+Classes com maior dificuldade de diferenciação, havendo alta taxa de sobreposição de intensidades de cores e texturas.
 \begin{figure}[!htb]
  \begin{center}
    \includegraphics[width=\linewidth]{\detokenize {figuras/praia-montanha.png}}
@@ -990,7 +1016,7 @@ Classes com maior dificultade de diferenciação, havendo alta taxa de sobreposi
 \justifying
 \begin{itemize}
 \item Melhores operações: todas, apenas mistura e apenas composição;
-\item Piores: apenas borramento, ruído ou \textit{unsharp masking} (filtros comuns);
+\item Piores: apenas borramento, ruído e \textit{unsharp masking} (filtros comuns);
 \vspace{2pt}
 \item Melhor descritor: ACC;
 \item Piores: CCV e GCH;
@@ -1019,7 +1045,7 @@ Classes com maior dificultade de diferenciação, havendo alta taxa de sobreposi
   \end{tabular}
 \end{table}
 \begin{itemize}
-\item Em algumas execuções: geração artificial (1), SMOTE (2) e imagens originais (3).
+\item Em algumas execuções: Artificial (1), SMOTE (2) e Original (3).
 \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
@@ -1046,7 +1072,7 @@ Classes com maior dificultade de diferenciação, havendo alta taxa de sobreposi
 \url{http://caffe.berkeleyvision.org/}
 \caption{Treinamento das classes praia e montanha da base COREL-1000.}
   \begin{tabular}{c|c}
-    Algoritmos    &   Medida F1 \\ \hline
+    Bases    &   Medida F1 \\ \hline
     Original      &   0.708  \\
     Desbalanceada &   0.577  \\
     Rebalanceada  &   0.677  \\
@@ -1059,29 +1085,29 @@ Classes com maior dificultade de diferenciação, havendo alta taxa de sobreposi
 % Além de analisar o processamento realizado por uma rede de convolução para a classificação das imagens, uma rede RBM também será treinada para análise da sua memória associativa. As imagens artificialmente geradas foram adicionadas no conjunto de treino sem verificação da sua relevância, o que pode ter prejudicado a classificação. A memória associativa aprendida com o treinamento de uma máquina de Bolztmann restrita pode vir a auxiliar no entendimento dessas imagens como relevantes ou não. Além disso, pode servir como escolha para qual imagem original utilizar, ao invés do método aleatório utilizado nos resultados preliminares.
 
 \section{Próximos Passos}
-\begin{frame}{Próximos Passos}
+\begin{frame}{Próximos Passos - Curto Prazo}
 \setlength\leftmargini{0em}
 \setstretch{1.2}
 \justifying
   \begin{itemize}
   \item Desbalancear as 10 classes da COREL-1000 em escada;
   \item Utilizar todas as classes com apenas 1 desbalanceada;
-  \item Analisar as características latentes que as redes neurais de convolução conseguem extrair
+  \item Analisar as características latentes que as redes neurais de convolução conseguem extrair.
     \begin{itemize}
       \item Bases bem discriminadas quanto às propriedades de textura, cor e forma.
     \end{itemize}
   \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
-\begin{frame}{Próximos Passos}
+\begin{frame}{Próximos Passos - Médio Prazo}
 \setlength\leftmargini{0em}
 \setstretch{1.2}
 \justifying
   \begin{itemize}
-  \item Analisar a memória associativa de uma rede de Boltzmann 
+  \item Analisar a memória associativa de uma máquina de Boltzmann restrita.
   \begin{itemize}
-    \item As imagens geradas foram adicionadas no conjunto de treino sem verificação da sua relevância;
-    \item Escolha para qual imagem original utilizar, ao invés do método aleatório utilizado nos resultados preliminares.
+    \item Escolher para qual imagem original utilizar, ao invés do método aleatório utilizado nos resultados preliminares;
+    \item Verificação da relevância das imagens geradas.
   \end{itemize}
   \end{itemize}
 \end{frame}
@@ -1155,9 +1181,17 @@ Ponti, M.; Nazaré, T; Thumé, G. \textbf{Image quantization as a dimensionality
 \end{columns}
 \end{frame}
 %-----------------------------------------------------------------------------
-\section{Referências}
-\begin{frame}{Referências}
+% \section{Referências}
+\nocite{*}
+%\section{Referências}
+\begin{frame}[allowframebreaks]{Referências}
+\tiny
+% \bibliographystyle{apacite}
+\bibliographystyle{plain}
+%\bibliographystyle{amsalpha}
+\bibliography{referencias}
 \end{frame}
+
 %-----------------------------------------------------------------------------
 \begin{frame}[plain]
   \maketitle
