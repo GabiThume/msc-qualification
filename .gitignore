@@ -10,3 +10,4 @@
 *.nav
 *.out
 *.snm
+.DS_Store
