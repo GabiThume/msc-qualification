@@ -131,22 +131,22 @@ Universidade de São Paulo \\ }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[noframenumbering]{Estrutura da Apresentação}
 \setstretch{1.2}
-\begin{multicols}{2}
+% \begin{multicols}{2}
   \tableofcontents
-\end{multicols}
+% \end{multicols}
 \end{frame}
 \section{Introdução}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \AtBeginSection[]{
 \begin{frame}<beamer>[noframenumbering]{Estrutura da Apresentação}
 \setstretch{1.2}
-\begin{multicols}{2}
+% \begin{multicols}{2}
 \tableofcontents[currentsection, sectionstyle=show/shaded,
 ]
 % \tableofcontents[currentsection,currentsubsection, hideothersubsections, 
 %     sectionstyle=show/shaded,
 % ]
-\end{multicols}
+% \end{multicols}
 \end{frame}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -162,7 +162,7 @@ Universidade de São Paulo \\ }
 \item Algoritmos de aprendizado de máquina: modelo de representação;
 \item Generalização permite classificar novos exemplos;
 \pause
-\item Características que dificultam a diferenciação entre as classes;
+\item Características que não são suficientes para a diferenciação entre as classes;
 \item Encontrar as características que melhor discriminam as classes.
 \end{itemize}
 \end{frame}
@@ -189,71 +189,76 @@ Universidade de São Paulo \\ }
 %-----------------------------------------------------------------------------
 \begin{frame}{Motivação - Características Latentes}
 
-\renewcommand{\tabcolsep}{0.0cm}
 \begin{figure}[htbp]
  \begin{center}
-\begin{subfigure}{.15\textwidth}
-  \centering
-  \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05b.png}}
-  \caption{}
-\end{subfigure}
-\begin{subfigure}{.15\textwidth}
-  \centering
-  \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05c.png}}
-  \caption{}
-\end{subfigure}
-\begin{subfigure}{.15\textwidth}
-  \centering
-    \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05d.png}}
-  \caption{}
-\end{subfigure}
-\begin{subfigure}{.15\textwidth}
-  \centering
-  \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05e.png}}
-  \caption{}
-\end{subfigure}
-\\
-\begin{subfigure}{.15\textwidth}
-  \centering
-  \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05ba.png}}
-  \caption{}
-\end{subfigure}
-\begin{subfigure}{.15\textwidth}
-  \centering
-  \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05ca.png}}
-  \caption{}
-\end{subfigure}
-\begin{subfigure}{.15\textwidth}
-  \centering
-  \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05da.png}}
-  \caption{}
-\end{subfigure}
-\begin{subfigure}{.15\textwidth}
-  \centering
-  \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05ea.png}}
-  \caption{}
-\end{subfigure}
-\\
-\begin{subfigure}{.15\textwidth}
-  \centering
-  \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05bb.png}}
-  \caption{}
-\end{subfigure}
-\begin{subfigure}{.15\textwidth}
-  \centering
-  \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05cb.png}}
-  \caption{}
-\end{subfigure}
-\begin{subfigure}{.15\textwidth}
-  \centering
-  \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05db.png}}
-  \caption{}
-\end{subfigure}
-\begin{subfigure}{.15\textwidth}
-  \centering
-  \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05eb.png}}
-  \caption{}
-\end{subfigure}
+ \begin{tabular}{c|c|c|c}
+   \includegraphics[width=0.2\linewidth]{figuras/alga_05b.png}&
+   \includegraphics[width=0.2\linewidth]{figuras/alga_05c.png}&
+   \includegraphics[width=0.2\linewidth]{figuras/alga_05d.png}&
+   \includegraphics[width=0.2\linewidth]{figuras/alga_05e.png} \\
+   % \includegraphics[width=0.2\linewidth]{figuras/alga_05ba.png}&
+   % \includegraphics[width=0.2\linewidth]{figuras/alga_05ca.png}&
+   % \includegraphics[width=0.2\linewidth]{figuras/alga_05da.png}&
+   % \includegraphics[width=0.2\linewidth]{figuras/alga_05ea.png} \\
+   \includegraphics[width=0.2\linewidth]{figuras/alga_05bb.png}&
+   \includegraphics[width=0.2\linewidth]{figuras/alga_05cb.png}&
+   \includegraphics[width=0.2\linewidth]{figuras/alga_05db.png}&
+   \includegraphics[width=0.2\linewidth]{figuras/alga_05eb.png} \\
+ \end{tabular}
+
+% \renewcommand{\tabcolsep}{0.0cm}
+% \begin{figure}[htbp]
+%  \begin{center}
+% \begin{subfigure}{.15\textwidth}
+%   \centering
+%   \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05b.png}}
+% \end{subfigure}
+% \begin{subfigure}{.15\textwidth}
+%   \centering
+%   \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05c.png}}
+% \end{subfigure}
+% \begin{subfigure}{.15\textwidth}
+%   \centering
+%     \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05d.png}}
+% \end{subfigure}
+% \begin{subfigure}{.15\textwidth}
+%   \centering
+%   \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05e.png}}
+% \end{subfigure}
+% \\
+% \begin{subfigure}{.15\textwidth}
+%   \centering
+%   \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05ba.png}}
+% \end{subfigure}
+% \begin{subfigure}{.15\textwidth}
+%   \centering
+%   \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05ca.png}}
+% \end{subfigure}
+% \begin{subfigure}{.15\textwidth}
+%   \centering
+%   \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05da.png}}
+% \end{subfigure}
+% \begin{subfigure}{.15\textwidth}
+%   \centering
+%   \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05ea.png}}
+% \end{subfigure}
+% \\
+% \begin{subfigure}{.15\textwidth}
+%   \centering
+%   \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05bb.png}}
+% \end{subfigure}
+% \begin{subfigure}{.15\textwidth}
+%   \centering
+%   \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05cb.png}}
+% \end{subfigure}
+% \begin{subfigure}{.15\textwidth}
+%   \centering
+%   \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05db.png}}
+% \end{subfigure}
+% \begin{subfigure}{.15\textwidth}
+%   \centering
+%   \includegraphics[width=\linewidth]{\detokenize{figuras/alga_05eb.png}}
+% \end{subfigure}
   \caption{Características latentes de algas verdes.}
 %{Características latentes de algas verdes. A primeira imagem (a) é uma imagem original segmentada de alga. As próximas colunas são imagens resultantes da deconvolução da imagem (coluna 2), filtragem Gaussiana (coluna 3) e filtragem Gaussiana seletiva (coluna 4). A primeira linha mostra versões diferentes de imagens de algas, a segunda linha exibe imagens resultantes da diferença de Gaussianas, e a terceira linha demonstra imagens binárias obtidas por limiarização das imagens contidas na segunda linha). \textit{Fonte:~Elaborado pelo autor.}}
  \end{center}
@@ -268,7 +273,7 @@ Universidade de São Paulo \\ }
 \begin{itemize}
 \item Justificado o uso de métodos de processamento e preparação de imagens antes da extração;
 \item Podem revelar características latentes, não visíveis nas imagens originais;
-\item Foco: \emph{realçar características que possam melhor descrever certas classes, utilizando algoritmos sobre as imagens originais.}
+\item Foco: \emph{revelar características que possam melhor descrever certas classes, utilizando algoritmos sobre as imagens originais.}
 \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
@@ -285,10 +290,10 @@ Universidade de São Paulo \\ }
     %       \item Extração e classificação de imagens.
     %   \end{itemize}
     % }
-    \item 98\% de acurácia após aquisição, pré-processamento e segmentação (Rocha et al., 2010); % frutas
+    \item 98\% de acurácia após pré-processamento e segmentação (Rocha et al., 2010); % frutas
     \item Quantização pode impactar a classificação (Kanan e Cottrell, 2012);
     \item Quantização permite obter vetores de características mais compactos e com maior capacidade de discriminação entre classes (Ponti et al., 2014);
-    \item[]  {Continuação: analisar redes que aprendem quais operações geram essas características.}
+    \item[]  {Continuação.}
   \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
@@ -301,7 +306,7 @@ Universidade de São Paulo \\ }
     \item Imagens representam eventos importantes mas menos frequentes;
     \item Obstáculo, métodos de transformação do espaço e de 
     classificação assumem que a base está balanceada;
-    \item Foco: \emph{geração de imagens artificiais a partir do realce de características das imagens da classe minoritária.}
+    \item Foco: \emph{geração de imagens artificiais a partir do processamento de características das imagens da classe minoritária.}
   \end{itemize}
   \begin{figure}[htbp]
  \begin{center}
@@ -329,7 +334,7 @@ Universidade de São Paulo \\ }
   \begin{block}{Métodos de pré-processamento}
     \justifying
     \begin{itemize}
-      \item Extrair características latentes que aumentem a variância entre as classes, sem aumentar a variância intra-classe;
+      \item Evidenciar características latentes que aumentem a variância entre as classes, sem aumentar a variância intra-classe;
       \item Melhorar a classificação.
     \end{itemize}
   \end{block}
@@ -363,7 +368,7 @@ Universidade de São Paulo \\ }
       \item Analisar: 
         \begin{itemize}
           \item impacto de métodos canônicos na classificação;
-          \item aprendizado de bases bem discriminadas por redes de convolução.
+          \item aprendizado de bases comportadas por redes de convolução.
         \end{itemize}
       \item Tornar as características latentes visíveis;% com o auxílio dos métodos canônicos e CNN;
       \item Gerar imagens artificiais. 
@@ -499,10 +504,12 @@ Universidade de São Paulo \\ }
 \begin{itemize}
   \item Reconhecimento humano de novos padrões - capacidade de generalização (hierarquias);% \cite{thesisDeep}. 
   \item Simular o funcionamento do cérebro humano por meio de camadas;
-  \item Redes neurais profundas possuem duas ou mais ocultas; %\cite{neuralNielsen}. 
-  \item Subdividem em problemas mais simples de serem resolvidos;
-  \item Representam o estado da arte em visão computacional, mas está faltando o entendimento das suas propriedades.
-%\cite{Schmidhuber2014}.
+  \item Redes profundas possuem duas ou mais camadas ocultas; 
+  \item Subdividem em representações mais simples;
+  \item Representam o estado da arte em visão computacional
+  \begin{itemize}
+    \item Há falta de estudo sobre suas propriedades;
+  \end{itemize}
 \end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
@@ -607,7 +614,6 @@ Universidade de São Paulo \\ }
 \justifying
     \begin{itemize}
         \item Aumentar o número de elementos;
-        \item Replicar não reporta melhorias;
     \begin{block}{SMOTE}
 \setlength\leftmargini{1em}
         \begin{itemize}
@@ -639,7 +645,7 @@ Universidade de São Paulo \\ }
 \end{frame}
 %-----------------------------------------------------------------------------
 \subsection{Máquina de Boltzmann restrita}
-\begin{frame}{Máquina de Boltzmann restrita}
+\begin{frame}{Máquina de Boltzmann Restrita}
 \begin{figure}
     \includegraphics[height=0.75\textheight]{figuras/geral_rbm.pdf}
 \end{figure}
@@ -650,9 +656,11 @@ Universidade de São Paulo \\ }
 \begin{itemize}
   \item Pixels: unidades visíveis. Camada oculta: correlação entre os pixels;
   \item Aprendem representações das imagens;
-  \item Verificação da relevância de uma imagem para o aprendizado;
-  \item Utilizar apenas um neurônio oculto, com a matriz de pesos como memória associativa.
-  \item Informação em uma imagem artificialmente gerada.
+  \item Verificação da relevância de uma imagem para o aprendizado:
+  \begin{itemize}
+    \item Utilizar apenas um neurônio oculto, com a matriz de pesos como memória associativa;
+    \item Esse memória não se modifica se for dado como entrada uma imagem cujos padrões já foram aprendidos.
+  \end{itemize}
 \end{itemize}
  \begin{figure}[hbpt]
  \begin{center}
@@ -671,6 +679,8 @@ Universidade de São Paulo \\ }
     \item Compreendem todo o pipeline com camadas de neurônios;
     \item Aprendem as melhores características que diferenciam as classes, utilizando convolução;
     \end{itemize}
+    \vspace{0,5cm}
+
     \item Máquinas de Boltzmann restritas (RBM)
     \begin{itemize}
         \item Aprende a representação das imagens de entrada;
@@ -701,21 +711,6 @@ Universidade de São Paulo \\ }
 \item [Forma:] características externas. Ex. curvatura;
 \item [Cor:] distribuição espacial de cores na imagem. Ex. histograma.
 \end{description}
-\end{frame}
-%-----------------------------------------------------------------------------
-\begin{frame}{Extração de Características}
-\setlength\leftmargini{1.5em}
-\begin{itemize}
-\item[GCH]<1> {\emph{Histograma global de cor} - $N$ (intensidades).} % Mais simples representação. }
-
-\item[CCV]<2> {\emph{Vetor de coerência de cor}. Classifica os pixels da imagem em coerentes e incoerentes de acordo com um \textit{threshold}, computa e concatena os histogramas - $2N$.}
-
-\item[BIC]<3> {\emph{Classificação de pixels de borda e interior}. Mesma cor que seus vizinhos, é pixel de interior. Computa dois histogramas - $2N$.}
-
-\item[ACC]<4> {\emph{Auto-correlograma de cor}: captura a correlação espacial entre cores idênticas. Probabilidade de encontrar dois pixels com a mesma cor, a uma distância $d$ um do outro. 1, 3, 5 e 7 - $4N$.}
-
-\item[Haralick]<5> {Entropia, homogeneidade, contraste, correlação, probabilidade máxima e uniformidade - $6$.}
-\end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
 \section{Metodologia}
@@ -766,7 +761,7 @@ Universidade de São Paulo \\ }
 \begin{frame}{Metodologia - Bases de Imagens}
 \setstretch{1.2}
 \setlength\leftmargini{1em}
-\begin{block}{Bem discriminadas}
+\begin{block}{Bem comportadas}
 \justifying
 \begin{itemize}
 \item Cor: COREL-1000;
@@ -835,7 +830,7 @@ Universidade de São Paulo \\ }
 
 % Pode-se estender essa medida obtendo-se a \underline{acurácia $k$-fold}: medida de acerto baseada na divisão do conjunto de objetos em teste e treinamento, realizando a repetição dos experimentos $n$ vezes e obtendo a média e o desvio padrão. A acurácia de cada experimento é obtida pela Equação~\ref{eq:Accuracy}, que considera problemas de desbalanceamento de classes.
 %-----------------------------------------------------------------------------
-\begin{frame}{Metodologia - Avaliação}
+\begin{frame}{Metodologia - Avaliação da Classificação}
 % \setstretch{1.2}
 \setlength\leftmargini{1em}
 \begin{block}{Medida F1}
@@ -856,34 +851,23 @@ Problema da acurácia: minoritária sem resultados corretos. \\
 
 \pause
 \begin{equation*}
-  F1 = 2 \frac{PR}{P+R}
+  F1 = 2 \frac{P \cdot R}{P+R}
 \end{equation*}
 \end{itemize}
 \end{block}
 \end{frame}
 %-----------------------------------------------------------------------------
-% Uma outra medida para bases desbalanceadas é a \underline{medida-F1} (conhecida como \textit{F1-Measure} ou \textit{F1-Score} e apresentada na Equação~\eqref{medidaf}), que combina precisão e revocação como medida de 
-% A partir dessas medidas, o \underline{teste estatístico de Friedman} pode ser usado para determinar se há diferença significante em uma amostra de resultados gerados \cite{friedman2010}. As performances dos algoritmos são analisados e um \textit{rank} é atribuído para cada conjunto de dados. Ele considera que a hipótese nula a ser testada é que não há diferença estatística relevante entre as observações. Para analisar se o teste da hipótese é significativo, pode ser utilizado o \underline{p-valor}, que indica o quão estatisticamente significante o resultado é: quanto menor o seu valor, maior a evidência contra a hipótese nula (geralmente o limiar utilizado é de 0,05).
-
-\begin{frame}{Metodologia - Avaliação}
-\setstretch{1.2}
-\setlength\leftmargini{1em}
-\begin{block}{Teste de Friedman}
-\begin{itemize}
-\item Determinar se há diferença significante entre os resultados gerados;
-\item Analisa as performances dos algoritmos e atribui um \textit{rank};
-\item A hipótese nula a ser testada é que não há diferença estatística relevante entre as observações;
-\item P-valor indica essa significância: quanto menor o seu valor, maior a evidência contra a hipótese nula (limiar de 0,05).
-\end{itemize}
-\end{block}
-\end{frame}
-%-----------------------------------------------------------------------------
-\begin{frame}{Metodologia - Avaliação}
+\begin{frame}{Metodologia - Avaliação dos Vetores}
 \setstretch{1.2}
 \justifying
 \setlength\leftmargini{1em}
 \begin{block}{Mahalanobis}  %\cite{mahalanobis2000}
-Distância entre a média e a variância das classes. 
+
+\begin{itemize}
+\item Distância entre a média e a variância das classes;
+\item Quanto maior a distância entre as distribuições das classes melhor;
+\item Antes e depois dos processamentos a serem realizados.
+\end{itemize}
 \vspace{4pt}
 
 Baseia na correlação entre as variáveis e pode ser definida por
@@ -893,35 +877,70 @@ Baseia na correlação entre as variáveis e pode ser definida por
 \noindent onde $x_i$ é um vetor de valores, $\mu$ a média e C a matriz de covariância.
 \end{block}
 \end{frame}
+%-----------------------------------------------------------------------------
+\begin{frame}{Metodologia - Avaliação}
+\setstretch{1.2}
+\setlength\leftmargini{1em}
+\begin{block}{Teste de Friedman}
+\begin{itemize}
+\item Determinar se há diferença significante entre os resultados gerados;
+\item Analisa as performances dos algoritmos e atribui um \textit{rank};
+\item A hipótese nula a ser testada é que não há diferença estatística relevante entre as observações;
+\item P-valor indica essa significância (limiar de 0,05).
+\end{itemize}
+\end{block}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Resultados}
-\subsection{Resultados Esperados}
-\begin{frame}{Resultados Esperados}
-\setlength\leftmargini{0em}
-
-\begin{itemize}
-\item Melhorar a classificação, validando-a com a medida-F1. 
-\begin{itemize}
-\item \textit{Pré-processamento} de imagens que caracterizem melhor aspectos de suas classes;
-\item \textit{Geração artificial de imagens} de classes minoritárias.
-\end{itemize}
-\item Analisar as características aprendidas com a CNN em bases específicas; 
-\item Escolher imagens que adicionam informações (RBM);
-\item Testar bases naturalmente não balanceadas.
-\end{itemize}
-
-% Os resultados esperados são relacionados às áreas de \textbf{processamento de imagens e reconhecimento de padrões}. Espera-se obter uma comprovação das hipóteses levantadas por essa pesquisa. Os resultados são esperados em duas vertentes:
-
-% \begin{enumerate}
-%  \item \textit{Pré-processamento} de imagens que caracterizem melhor aspectos de suas classes, aumentando a variância entre as classes quando comparado com as imagens originais.
-%  \item \textit{Geração artificial de imagens} de classes minoritárias de forma a compensar o desbalanceamento natural das bases de dados.
-% \end{enumerate}
-
-% Em ambos os casos pretende-se melhorar a classificação, validando-a através do cálculo da medida-F1. A análise das características aprendidas por uma rede neural de convolução será realizada ao executar o treinamento com bases específicas que destaquem propriedades como cor, textura e forma. Além disso, os resultados serão obtidos a partir da escolha de quais imagens adicionam informação ao conjunto de treino. As redes RBM serão utilizadas para este fim. Bases naturalmente não balanceadas serão testadas e seus resultados avaliados.
+\section{Resultados Preliminares}
+% \subsection{Descrição do experimento}
+%-----------------------------------------------------------------------------
+\begin{frame}[plain]{Descrição do Experimento}
+\begin{figure}[!htb]
+ \begin{center}
+   \includegraphics[width=0.65\textheight]{\detokenize {figuras/flow_main.pdf}}
+ \end{center}
+  \caption{Fluxo dos resultados preliminares.}
+\end{figure}
 \end{frame}
 %-----------------------------------------------------------------------------
-\subsection{Descrição do experimento}
+\begin{frame}[plain]{Descrição do Experimento}
+\begin{figure}[!htb]
+ \begin{center}
+   \includegraphics[width=0.55\textheight]{\detokenize {figuras/flow_sub.pdf}}
+ \end{center}
+  \caption{Fluxo da geração artificial.}
+\end{figure}
+\end{frame}
+%-----------------------------------------------------------------------------
 \begin{frame}{Descrição do Experimento}
+\begin{itemize}
+\item Classes praia e montanha da COREL-1000;
+\item 50\% de teste/treino, com desbalanceamento da classe minoritária em 50, 25, 12 e 6;
+\item \textbf{Geração artificial}: borramento, adição de ruído, realce, mistura e combinação;
+\item \textbf{Quantização}: Intensidade para Haralick e MSB para os outros;
+\item \textbf{Extração de características}: ACC, CCV, BIC, GCH e Haralick;
+\item \textbf{Classificação} com KNN (K=1).
+  % \begin{itemize}
+  % \item Naive Bayes apresentou melhora com a replicação;
+  % \item Comportamento não desejado para a avaliação do rebalanceamento de classes.
+  % \end{itemize}
+\end{itemize}
+\end{frame}
+%-----------------------------------------------------------------------------
+\begin{frame}{Descrição do Experimento}
+\setlength\leftmargini{0em}
+\setstretch{1.2}
+\justifying
+Classes com alta sobreposição nas características de cor e textura.
+\begin{figure}[!htb]
+ \begin{center}
+   \includegraphics[width=\linewidth]{\detokenize {figuras/praia-montanha.png}}
+ \end{center}
+  \caption{Classes ``praia'' e ``montanha'' da base de imagens COREL-1000.}
+\end{figure}
+\end{frame}
+%-----------------------------------------------------------------------------
+\begin{frame}{Descrição do Experimento - Geração Artificial}
 \setlength\leftmargini{1em}
 \setstretch{1.2}
 \renewcommand{\tabcolsep}{0.04cm}
@@ -946,62 +965,50 @@ Baseia na correlação entre as variáveis e pode ser definida por
 \vspace{25pt}
 \end{frame}
 %-----------------------------------------------------------------------------
-% Os descritores de características utilizados para os resultados foram apresentados na Seção \ref{sec:extracao}. Considerando que em um experimento anterior o melhor resultado foi atribuído à quantização com o método de Intensidade para o extrator Haralick e MSB para os outros, apenas esses testes foram aprofundados (tópico anteriormente discutido na Seção \ref{sec:quantizacao}). Neste experimento o classificador KNN foi utilizado, com $K=1$. Inicialmente o classificador Naive Bayes foi explorado, apresentando melhora na acurácia ao apenas replicar as imagens. Esse comportamento não é desejado em um classificador para a avaliação de rebalanceamento de classes. O código desenvolvido para esses resultados preliminares está disponível em \url{https://bitbucket.org/moacirponti/imagefeatureextraction/overview}. 
-\begin{frame}[plain]{Descrição do Experimento}
-\begin{figure}[!htb]
- \begin{center}
-   \includegraphics[width=0.65\textheight]{\detokenize {figuras/flow_main.pdf}}
- \end{center}
-  \caption{Fluxo dos resultados preliminares.}
-\end{figure}
+\begin{frame}{Descrição do Experimento - Extração de Características}
+% \begin{frame}{Extração de Características}
+\setlength\leftmargini{1.5em}
+\begin{itemize}
+\item[GCH]<1> 
+{\emph{Histograma global de cor} - $N$ (intensidades).} % Mais simples representação. }
+
+\item[CCV]<2> 
+{\emph{Vetor de coerência de cor}. Classifica os pixels da imagem em coerentes e incoerentes de acordo com um \textit{threshold}, computa e concatena os histogramas - $2N$.}
+
+\item[BIC]<3> 
+{\emph{Classificação de pixels de borda e interior}. Mesma cor que seus vizinhos, é pixel de interior. Computa dois histogramas - $2N$.}
+
+\item[ACC]<4> 
+{\emph{Auto-correlograma de cor}: captura a correlação espacial entre cores idênticas. Probabilidade de encontrar dois pixels com a mesma cor, a uma distância $d$ um do outro. 1, 3, 5 e 7 - $4N$.}
+
+\item[Haralick]<5> 
+{Entropia, homogeneidade, contraste, correlação, probabilidade máxima e uniformidade - $6$.}
+\end{itemize}
 \end{frame}
 %-----------------------------------------------------------------------------
-\begin{frame}[plain]{Descrição do Experimento}
-\begin{figure}[!htb]
- \begin{center}
-   \includegraphics[width=0.55\textheight]{\detokenize {figuras/flow_sub.pdf}}
- \end{center}
-  \caption{Fluxo da geração artificial.}
-\end{figure}
-\end{frame}
-%-----------------------------------------------------------------------------
-\subsection{Resultados Preliminares}
-\begin{frame}{Resultados Preliminares}
-\setlength\leftmargini{0em}
-\setstretch{1.2}
-\justifying
-Classes com maior dificuldade de diferenciação, havendo alta taxa de sobreposição de intensidades de cores e texturas.
-\begin{figure}[!htb]
- \begin{center}
-   \includegraphics[width=\linewidth]{\detokenize {figuras/praia-montanha.png}}
- \end{center}
-  \caption{Classes ``praia'' e ``montanha'' da base de imagens COREL-1000.}
-\end{figure}
-\end{frame}
-%-----------------------------------------------------------------------------
-\begin{frame}{Resultados Preliminares - Melhor}
+\begin{frame}{Resultados Preliminares - Melhor Rebalanceamento}
 \setlength\leftmargini{0em}
 \justifying
 \begin{itemize}
-\item Ganho estatístico da medida-F, quando comparado à geração de exemplos artificiais no espaço de atributos; % (ou seja, depois que as características já foram extraídas das imagens)
+\item Ganho estatístico da medida-F, quando comparado à geração no espaço de atributos; % (ou seja, depois que as características já foram extraídas das imagens)
 % \item Descritor ACC, conversão MSB e operação de pré-processamento combinação. 
 \end{itemize}
 \vspace{-0.3cm}
 \begin{figure}[htb]
  \begin{center}
-   \includegraphics[width=0.7\linewidth]{\detokenize {figuras/resultado-melhor4.png}}
+   \includegraphics[width=0.7\linewidth]{\detokenize {figuras/4-ACC_MSB_FScore.png}}
  \end{center}
  \caption{Resultado obtido com a operação de combinação.}
 \end{figure}
 \end{frame}
 %-----------------------------------------------------------------------------
-\begin{frame}{Resultados Preliminares - Pior}
+\begin{frame}{Resultados Preliminares - Pior Rebalanceamento}
 \setlength\leftmargini{0em}
 \setstretch{1.2}
 \justifying
 \begin{figure}[htb]
  \begin{center}
-   \includegraphics[width=0.8\linewidth]{\detokenize {figuras/resultado-pior1.png}}
+   \includegraphics[width=0.8\linewidth]{\detokenize {figuras/1-GCH_MSB_FScore.png}}
  \end{center}
  \caption{Piores resultados, obtidos com a adição de ruído.}
 \end{figure}
@@ -1012,14 +1019,32 @@ Classes com maior dificuldade de diferenciação, havendo alta taxa de sobreposi
 %-----------------------------------------------------------------------------
 \begin{frame}{Resultados Preliminares}
 \setlength\leftmargini{0em}
+% \setstretch{1.2}
+\justifying
+
+\begin{itemize}
+\item Replicação: SRS - \textit{Simple Random Sampling};
+\item Não adiciona informações novas para o aprendizado.
+\end{itemize}
+
+\begin{figure}[htb]
+ \begin{center}
+   \includegraphics[width=0.65\linewidth]{\detokenize {figuras/resultado-copia.png}}
+ \end{center}
+  \caption{Simples replicação de exemplos sem pré-processamento.}
+\end{figure}
+\end{frame}
+%-----------------------------------------------------------------------------
+\begin{frame}{Resultados Preliminares}
+\setlength\leftmargini{0em}
 \setstretch{1.2}
 \justifying
 \begin{itemize}
 \item Melhores operações: todas, apenas mistura e apenas composição;
 \item Piores: apenas borramento, ruído e \textit{unsharp masking} (filtros comuns);
 \vspace{2pt}
-\item Melhor descritor: ACC;
-\item Piores: CCV e GCH;
+\item Descritor que melhor se beneficiou: ACC;
+\item Descritores que não se beneficiaram: CCV e GCH;
 % \vspace{2pt}
 % \item Melhor quantizador: MSB;
 % \item Piores: CCV e GCH;
@@ -1048,24 +1073,6 @@ Classes com maior dificuldade de diferenciação, havendo alta taxa de sobreposi
 \item Em algumas execuções: Artificial (1), SMOTE (2) e Original (3).
 \end{itemize}
 \end{frame}
-%-----------------------------------------------------------------------------
-\begin{frame}{Resultados Preliminares}
-\setlength\leftmargini{0em}
-% \setstretch{1.2}
-\justifying
-
-\begin{itemize}
-\item Replicação: SRS - \textit{Simple Random Sampling};
-\item Não adiciona informações novas para o aprendizado.
-\end{itemize}
-
-\begin{figure}[htb]
- \begin{center}
-   \includegraphics[width=0.65\linewidth]{\detokenize {figuras/resultado-copia.png}}
- \end{center}
-  \caption{Simples replicação de exemplos sem pré-processamento.}
-\end{figure}
-\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Resultados Preliminares - Rede de Convolução}
 \begin{table}
@@ -1073,18 +1080,30 @@ Classes com maior dificuldade de diferenciação, havendo alta taxa de sobreposi
 \caption{Treinamento das classes praia e montanha da base COREL-1000.}
   \begin{tabular}{c|c}
     Bases    &   Medida F1 \\ \hline
-    Original      &   0.708  \\
+    Original não balanceada     &   0.708  \\
     Desbalanceada &   0.577  \\
     Rebalanceada  &   0.677  \\
   \end{tabular}
 \end{table}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% O treinamento de uma rede neural de convolução~\footnote{\url{http://caffe.berkeleyvision.org/}} foi realizado, utilizando as classes ``praia'' e ``montanha'', balanceadas, da base COREL-1000. A classificação desse treinamento obteve $\approx 80\%$ de acurácia, enquanto que utilizando os extratores padrões foi possível atingir apenas $\approx 69\%$. Isso reforça a proposta de analisar quais são as características latentes que esse tipo de rede neural consegue extrair. Para essa análise vão ser utilizadas bases discriminadas quanto às propriedades de textura, cor e forma.
-
-% Além de analisar o processamento realizado por uma rede de convolução para a classificação das imagens, uma rede RBM também será treinada para análise da sua memória associativa. As imagens artificialmente geradas foram adicionadas no conjunto de treino sem verificação da sua relevância, o que pode ter prejudicado a classificação. A memória associativa aprendida com o treinamento de uma máquina de Bolztmann restrita pode vir a auxiliar no entendimento dessas imagens como relevantes ou não. Além disso, pode servir como escolha para qual imagem original utilizar, ao invés do método aleatório utilizado nos resultados preliminares.
-
 \section{Próximos Passos}
+% \subsection{Resultados Esperados}
+\begin{frame}{Resultados Esperados}
+\setlength\leftmargini{0em}
+
+\begin{itemize}
+\item Melhorar a classificação, validando-a com a medida-F1. 
+\begin{itemize}
+\item \textit{Pré-processamento} de imagens que caracterizem melhor aspectos de suas classes;
+\item \textit{Geração artificial de imagens} de classes minoritárias.
+\end{itemize}
+\item Analisar as características aprendidas com a CNN em bases específicas; 
+\item Escolher imagens que adicionam informações (RBM);
+\item Testar bases naturalmente não balanceadas.
+\end{itemize}
+\end{frame}
+%-----------------------------------------------------------------------------
 \begin{frame}{Próximos Passos - Curto Prazo}
 \setlength\leftmargini{0em}
 \setstretch{1.2}
@@ -1094,7 +1113,7 @@ Classes com maior dificuldade de diferenciação, havendo alta taxa de sobreposi
   \item Utilizar todas as classes com apenas 1 desbalanceada;
   \item Analisar as características latentes que as redes neurais de convolução conseguem extrair.
     \begin{itemize}
-      \item Bases bem discriminadas quanto às propriedades de textura, cor e forma.
+      \item Bases comportadas quanto às propriedades de textura, cor e forma.
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -1104,14 +1123,14 @@ Classes com maior dificuldade de diferenciação, havendo alta taxa de sobreposi
 \setstretch{1.2}
 \justifying
   \begin{itemize}
-  \item Analisar a memória associativa de uma máquina de Boltzmann restrita.
+  \item Analisar a memória associativa aprendida com uma máquina de Boltzmann restrita.
   \begin{itemize}
     \item Escolher para qual imagem original utilizar, ao invés do método aleatório utilizado nos resultados preliminares;
     \item Verificação da relevância das imagens geradas.
   \end{itemize}
   \end{itemize}
 \end{frame}
-%-----------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Atividades e cronograma}
 \begin{frame}{Atividades e Cronograma}
 \definecolor{cinza}{rgb}{0.5,0.5,0.5}
@@ -1132,7 +1151,7 @@ Sem. & 1\textordmasculine\ Sem. & 2\textordmasculine\ Sem. & 1\textordmasculine\
 %   &         2014        &       2015         \\
 Disciplinas   &\y\y    &\y\y      &\x\x     &\x\x    &\x \\
 \hline
-Revisão   &\x\x    &\y\y      &\r\r     &\x\x    &\x \\
+Revisão   &\x\x    &\y\y      &\r\r     &\r\r    &\x \\
 \hline
 Geração artificial   &\x\x    &\y\y      &\r\r     &\r\x    &\x \\
 \hline
