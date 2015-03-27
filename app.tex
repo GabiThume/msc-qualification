@@ -400,7 +400,7 @@ Universidade de São Paulo \\ }
 \begin{figure}[htbp]
  \begin{center}
    \includegraphics[width=1\linewidth]{figuras/preprocessamento.png}
- \caption{Borramento, realce e de equalização de histograma.}
+ \caption{Conversão em escala de cinza, borramento, realce e de equalização de histograma.}
  \end{center}
 \end{figure}
 \end{frame}
@@ -617,7 +617,7 @@ Universidade de São Paulo \\ }
     \begin{block}{SMOTE}
 \setlength\leftmargini{1em}
         \begin{itemize}
-            \item Multiplica a diferença entre o vetor de características de um elemento e do seu vizinho mais próximo por um número [0-1];
+            \item Multiplica a diferença entre o vetor de características de um elemento e do seu vizinho mais próximo por um número $0 \leq x \leq 1$;
             \item Adiciona ao vetor original, criando um novo elemento entre os dois vetores originais;
             \item Aprendido como exemplo da classe minoritária;
             \item Força uma região de decisão maior e mais geral;
@@ -796,7 +796,7 @@ Universidade de São Paulo \\ }
 \begin{block}{}
 \justifying
 \begin{itemize}
-\item Explorar algoritmos de realce de características relevantes:
+\item Explorar algoritmos para evidenciar características relevantes:
 \begin{itemize}
 \item Melhorar discriminação entre as classes;
 \item Auxiliar no rebalanceamento.
@@ -973,10 +973,10 @@ Classes com alta sobreposição nas características de cor e textura.
 {\emph{Histograma global de cor} - $N$ (intensidades).} % Mais simples representação. }
 
 \item[CCV]<2> 
-{\emph{Vetor de coerência de cor}. Classifica os pixels da imagem em coerentes e incoerentes de acordo com um \textit{threshold}, computa e concatena os histogramas - $2N$.}
+{\emph{Vetor de coerência de cor}. Classifica os pixels da imagem em coerentes e incoerentes de acordo com um \textit{threshold}, calcula e concatena os histogramas - $2N$.}
 
 \item[BIC]<3> 
-{\emph{Classificação de pixels de borda e interior}. Mesma cor que seus vizinhos, é pixel de interior. Computa dois histogramas - $2N$.}
+{\emph{Classificação de pixels de borda e interior}. Mesma cor que seus vizinhos, é pixel de interior. Calcula dois histogramas - $2N$.}
 
 \item[ACC]<4> 
 {\emph{Auto-correlograma de cor}: captura a correlação espacial entre cores idênticas. Probabilidade de encontrar dois pixels com a mesma cor, a uma distância $d$ um do outro. 1, 3, 5 e 7 - $4N$.}
@@ -1081,7 +1081,7 @@ Classes com alta sobreposição nas características de cor e textura.
   \begin{tabular}{c|c}
     Bases    &   Medida F1 \\ \hline
     Original não balanceada     &   0.708  \\
-    Desbalanceada &   0.577  \\
+    Desbalanceada em 50\% &   0.577  \\
     Rebalanceada  &   0.677  \\
   \end{tabular}
 \end{table}
